@@ -1,0 +1,73 @@
+/* Sidebar Container */
+.sidebar {
+    width: 60px; /* Collapsed by default */
+    height: 100vh;
+    background-color: #1a202c; /* Dark Gray */
+    color: white;
+    padding: 10px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: all 0.3s ease-in-out;
+    overflow-x: hidden;
+}
+
+/* Expand Sidebar on Hover (Desktop) */
+.sidebar:hover {
+    width: 250px;
+}
+
+/* Sidebar Open (Mobile) */
+.sidebar.open {
+    width: 250px;
+}
+
+/* Sidebar Navigation Links */
+.sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    transition: background 0.3s, padding-left 0.3s ease-in-out;
+    padding-left: 10px;
+}
+
+/* Active Sidebar Link */
+.sidebar a.active {
+    background-color: white;
+    color: black;
+    border-left: 4px solid #4CAF50; /* Green left border */
+}
+
+/* Sidebar Hover Effect */
+.sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 15px;
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Mobile Sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        left: -100%;
+    }
+  
+    .sidebar.open {
+        left: 0;
+    }
+}
