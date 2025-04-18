@@ -32,7 +32,7 @@ mock-test-potal-main/.next/
 mock-test-potal-main/.turbo/
 mock-test-potal-main/.env
 mock-test-potal-main/.env.*
-mock-test-potal-main/.json.*
+mock-test-potal-main/src/*.json
 
 # Frontend logs
 mock-test-potal-main/npm-debug.log*
