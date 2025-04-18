@@ -1,0 +1,202 @@
+[
+    {
+        "question": "In a displacement reaction between iron and copper sulfate solution, what determines that iron is more reactive than copper?",
+        "options": [
+            "Iron displaces copper from its salt solution",
+            "Both metals have same reactivity",
+            "Copper displaces iron from its salt solution",
+            "No reaction occurs between them"
+        ],
+        "correctAnswer": "Iron displaces copper from its salt solution"
+    },
+    {
+        "question": "Which of these compounds will NOT undergo a double displacement reaction when mixed?",
+        "options": [
+            "NaCl + AgNO₃",
+            "NaCl + KCl",
+            "Na₂SO₄ + BaCl₂",
+            "CaCl₂ + Na₂CO₃"
+        ],
+        "correctAnswer": "NaCl + KCl"
+    },
+    {
+        "question": "What mass of carbon dioxide is produced when 5g of calcium carbonate completely reacts with hydrochloric acid?",
+        "options": [
+            "2.2g",
+            "4.4g",
+            "1.1g",
+            "3.3g"
+        ],
+        "correctAnswer": "2.2g"
+    },
+    {
+        "question": "Which type of chemical reaction occurs when zinc oxide turns yellow on heating and white on cooling?",
+        "options": [
+            "Reversible reaction",
+            "Decomposition reaction",
+            "Combination reaction",
+            "Double displacement reaction"
+        ],
+        "correctAnswer": "Reversible reaction"
+    },
+    {
+        "question": "If a metal M forms an oxide M₂O₃, what would be the formula of its chloride?",
+        "options": [
+            "MCl₃",
+            "MCl₂",
+            "M₂Cl₃",
+            "M₃Cl₂"
+        ],
+        "correctAnswer": "MCl₃"
+    },
+    {
+        "question": "Which gas is responsible for the lime water turning milky in the test for CO₂?",
+        "options": [
+            "CaCO₃",
+            "Ca(OH)₂",
+            "CO₂",
+            "H₂O"
+        ],
+        "correctAnswer": "CaCO₃"
+    },
+    {
+        "question": "During electrolysis of water, at which electrode is oxygen gas produced?",
+        "options": [
+            "Anode",
+            "Cathode",
+            "Both electrodes",
+            "Neither electrode"
+        ],
+        "correctAnswer": "Anode"
+    },
+    {
+        "question": "What is the ratio of hydrogen to oxygen atoms in the products of water electrolysis?",
+        "options": [
+            "2:1",
+            "1:2",
+            "1:1",
+            "4:1"
+        ],
+        "correctAnswer": "2:1"
+    },
+    {
+        "question": "Which of these metals will NOT react with dilute hydrochloric acid?",
+        "options": [
+            "Silver",
+            "Zinc",
+            "Magnesium",
+            "Iron"
+        ],
+        "correctAnswer": "Silver"
+    },
+    {
+        "question": "What happens to the pH when a base is diluted 100 times?",
+        "options": [
+            "Decreases by 2",
+            "Increases by 2",
+            "Decreases by 1",
+            "Increases by 1"
+        ],
+        "correctAnswer": "Decreases by 2"
+    },
+    {
+        "question": "Which indicator shows pink color in basic medium?",
+        "options": [
+            "Phenolphthalein",
+            "Methyl orange",
+            "Litmus",
+            "Universal indicator"
+        ],
+        "correctAnswer": "Phenolphthalein"
+    },
+    {
+        "question": "What is the oxidation state of chromium in K₂Cr₂O₇?",
+        "options": [
+            "+6",
+            "+3",
+            "+2",
+            "+4"
+        ],
+        "correctAnswer": "+6"
+    },
+    {
+        "question": "When copper is exposed to moist air, the green coating formed is:",
+        "options": [
+            "Basic copper carbonate",
+            "Copper oxide",
+            "Copper hydroxide",
+            "Copper chloride"
+        ],
+        "correctAnswer": "Basic copper carbonate"
+    },
+    {
+        "question": "Which gas is produced when a metal carbonate reacts with an acid?",
+        "options": [
+            "Carbon dioxide",
+            "Hydrogen",
+            "Oxygen",
+            "Carbon monoxide"
+        ],
+        "correctAnswer": "Carbon dioxide"
+    },
+    {
+        "question": "What is the nature of oxide formed by non-metal?",
+        "options": [
+            "Acidic",
+            "Basic",
+            "Neutral",
+            "Amphoteric"
+        ],
+        "correctAnswer": "Acidic"
+    },
+    {
+        "question": "In the reaction Zn + CuSO₄ → ZnSO₄ + Cu, zinc is:",
+        "options": [
+            "Reduced",
+            "Oxidized",
+            "Neither oxidized nor reduced",
+            "Both oxidized and reduced"
+        ],
+        "correctAnswer": "Oxidized"
+    },
+    {
+        "question": "Which metal can displace all other metals from their salt solutions?",
+        "options": [
+            "Potassium",
+            "Iron",
+            "Copper",
+            "Silver"
+        ],
+        "correctAnswer": "Potassium"
+    },
+    {
+        "question": "What is the pH of a solution with [H⁺] = 1 × 10⁻² mol/L?",
+        "options": [
+            "2",
+            "12",
+            "-2",
+            "8"
+        ],
+        "correctAnswer": "2"
+    },
+    {
+        "question": "Which of these is NOT a physical change?",
+        "options": [
+            "Rusting of iron",
+            "Melting of ice",
+            "Dissolving sugar",
+            "Crushing a can"
+        ],
+        "correctAnswer": "Rusting of iron"
+    },
+    {
+        "question": "What type of bond exists between hydrogen and chlorine in HCl?",
+        "options": [
+            "Covalent",
+            "Ionic",
+            "Metallic",
+            "Coordinate"
+        ],
+        "correctAnswer": "Covalent"
+    }
+]
