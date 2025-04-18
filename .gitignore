@@ -1,1 +1,41 @@
-backend/.env
+# Global ignores
+*.log
+*.env
+*.env.*
+.DS_Store
+.vscode/
+.idea/
+
+# === Backend (FastAPI) ===
+backend/__pycache__/
+backend/**/*.pyc
+backend/venv/
+backend/.env/
+backend/.mypy_cache/
+backend/.pytest_cache/
+backend/.coverage
+backend/coverage.xml
+backend/htmlcov/
+backend/.pylint.d/
+backend/*.sqlite3
+
+# Optional: ignore everything in backend except your app (uncomment and modify as needed)
+# backend/**/*
+# !backend/app/
+# !backend/app/**
+
+# === Frontend (React) ===
+mock-test-potal-main/node_modules/
+mock-test-potal-main/build/
+mock-test-potal-main/dist/
+mock-test-potal-main/.next/
+mock-test-potal-main/.turbo/
+mock-test-potal-main/.env
+mock-test-potal-main/.env.*
+mock-test-potal-main/.json.*
+
+# Frontend logs
+mock-test-potal-main/npm-debug.log*
+mock-test-potal-main/yarn-debug.log*
+mock-test-potal-main/yarn-error.log*
+mock-test-potal-main/pnpm-debug.log*

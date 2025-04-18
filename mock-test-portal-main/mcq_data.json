@@ -1,0 +1,152 @@
+[
+    {
+        "question": "Which movement did Mahatma Gandhi launch in 1919 against the Rowlatt Act?",
+        "options": [
+            "Non-Cooperation Movement",
+            "Quit India Movement",
+            "Satyagraha Movement",
+            "Civil Disobedience Movement"
+        ],
+        "correctAnswer": "Satyagraha Movement"
+    },
+    {
+        "question": "Who wrote the book 'Hind Swaraj' in 1909?",
+        "options": [
+            "Bal Gangadhar Tilak",
+            "Mahatma Gandhi",
+            "Jawaharlal Nehru",
+            "Bhagat Singh"
+        ],
+        "correctAnswer": "Mahatma Gandhi"
+    },
+    {
+        "question": "What was the main objective of the Simon Commission of 1928?",
+        "options": [
+            "To review the working of Indian constitution",
+            "To establish new trade routes",
+            "To suppress revolutionary activities",
+            "To reorganize the army"
+        ],
+        "correctAnswer": "To review the working of Indian constitution"
+    },
+    {
+        "question": "Which European nation unified in 1871 under the leadership of Otto von Bismarck?",
+        "options": [
+            "France",
+            "Italy",
+            "Germany",
+            "Austria"
+        ],
+        "correctAnswer": "Germany"
+    },
+    {
+        "question": "What was the immediate cause of the First World War?",
+        "options": [
+            "Russian Revolution",
+            "Assassination of Archduke Franz Ferdinand",
+            "Berlin Conference",
+            "Treaty of Versailles"
+        ],
+        "correctAnswer": "Assassination of Archduke Franz Ferdinand"
+    },
+    {
+        "question": "Who is known as the father of Vietnamese nationalism?",
+        "options": [
+            "Ho Chi Minh",
+            "Phan Boi Chau",
+            "Phan Chu Trinh",
+            "Ngo Dinh Diem"
+        ],
+        "correctAnswer": "Phan Boi Chau"
+    },
+    {
+        "question": "Which incident led to the launch of the Non-Cooperation Movement?",
+        "options": [
+            "Jallianwala Bagh Massacre",
+            "Chauri Chaura incident",
+            "Simon Commission",
+            "Dandi March"
+        ],
+        "correctAnswer": "Jallianwala Bagh Massacre"
+    },
+    {
+        "question": "What was the first printed novel in India?",
+        "options": [
+            "Anandamath",
+            "Sevasadan",
+            "Indulekha",
+            "Pariksha Guru"
+        ],
+        "correctAnswer": "Pariksha Guru"
+    },
+    {
+        "question": "Which event marked the beginning of the Great Depression?",
+        "options": [
+            "Wall Street Crash",
+            "Russian Revolution",
+            "Treaty of Versailles",
+            "Formation of USSR"
+        ],
+        "correctAnswer": "Wall Street Crash"
+    },
+    {
+        "question": "Who designed the 'Swaraj Flag' in 1921?",
+        "options": [
+            "Mahatma Gandhi",
+            "Pingali Venkayya",
+            "Annie Besant",
+            "Jawaharlal Nehru"
+        ],
+        "correctAnswer": "Pingali Venkayya"
+    },
+    {
+        "question": "What was the main aim of the Khilafat Movement?",
+        "options": [
+            "Independence from British",
+            "Protection of Khilafat in Turkey",
+            "Religious reforms",
+            "Economic reforms"
+        ],
+        "correctAnswer": "Protection of Khilafat in Turkey"
+    },
+    {
+        "question": "Which act abolished the East India Company's monopoly of trade with China?",
+        "options": [
+            "Charter Act of 1813",
+            "Charter Act of 1833",
+            "Regulating Act of 1773",
+            "Pitt's India Act"
+        ],
+        "correctAnswer": "Charter Act of 1833"
+    },
+    {
+        "question": "Who started the 'Young Italy' movement?",
+        "options": [
+            "Garibaldi",
+            "Mazzini",
+            "Cavour",
+            "Victor Emmanuel II"
+        ],
+        "correctAnswer": "Mazzini"
+    },
+    {
+        "question": "What was the name of the first Indian novel written in English?",
+        "options": [
+            "Rajmohan's Wife",
+            "Anandamath",
+            "Durgeshnandini",
+            "Chandrakanta"
+        ],
+        "correctAnswer": "Rajmohan's Wife"
+    },
+    {
+        "question": "Which country was NOT part of the Triple Alliance?",
+        "options": [
+            "Germany",
+            "Austria-Hungary",
+            "Russia",
+            "Italy"
+        ],
+        "correctAnswer": "Russia"
+    }
+]

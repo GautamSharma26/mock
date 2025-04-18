@@ -3,6 +3,7 @@ import {
   Box, Heading, Text, RadioGroup, Stack, Radio, Button, Input, Progress, useToast 
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import mockQuestions from "../../mcq_data.json"
 
 // Mock Questions Data
 // const mockQuestions = [
@@ -26,108 +27,109 @@ import { useNavigate } from "react-router-dom";
 //   },
 // ];
 
-const mockQuestions = [
-  {
-    "question": "Which of the following is NOT a state of matter?",
-    "options": [
-        "Solid",
-        "Liquid",
-        "Gas",
-        "Plasma"
-    ],
-    "correctAnswer": "Plasma"
-},
-{
-    "question": "What is the chemical symbol for gold?",
-    "options": [
-        "Ag",
-        "Au",
-        "Fe",
-        "Hg"
-    ],
-    "correctAnswer": "Au"
-},
-{
-    "question": "Which of the following is a chemical change?",
-    "options": [
-        "Melting ice",
-        "Dissolving sugar in water",
-        "Burning wood",
-        "Cutting paper"
-    ],
-    "correctAnswer": "Burning wood"
-},
-{
-    "question": "What is the smallest particle of an element that retains the properties of that element?",
-    "options": [
-        "Atom",
-        "Molecule",
-        "Compound",
-        "Ion"
-    ],
-    "correctAnswer": "Atom"
-},
-{
-    "question": "What is the name of the process by which a liquid changes into a gas?",
-    "options": [
-        "Freezing",
-        "Melting",
-        "Evaporation",
-        "Condensation"
-    ],
-    "correctAnswer": "Evaporation"
-},
-{
-    "question": "What is the pH of a neutral solution?",
-    "options": [
-        "0",
-        "7",
-        "14",
-        "10"
-    ],
-    "correctAnswer": "7"
-},
-{
-    "question": "Which of the following is a chemical property of a substance?",
-    "options": [
-        "Color",
-        "Density",
-        "Melting point",
-        "Flammability"
-    ],
-    "correctAnswer": "Flammability"
-},
-{
-    "question": "What is the name of the table that organizes all known elements?",
-    "options": [
-        "Periodic Table",
-        "Element Table",
-        "Chemical Table",
-        "Atomic Table"
-    ],
-    "correctAnswer": "Periodic Table"
-},
-{
-    "question": "What is the name of the force that holds atoms together in a molecule?",
-    "options": [
-        "Gravity",
-        "Electromagnetic force",
-        "Nuclear force",
-        "Weak force"
-    ],
-    "correctAnswer": "Electromagnetic force"
-},
-{
-    "question": "What is the name of the process by which a gas changes into a liquid?",
-    "options": [
-        "Evaporation",
-        "Condensation",
-        "Sublimation",
-        "Freezing"
-    ],
-    "correctAnswer": "Condensation"
-}
-]
+
+// const mockQuestions = [
+//   {
+//     "question": "Which of the following is NOT a state of matter?",
+//     "options": [
+//         "Solid",
+//         "Liquid",
+//         "Gas",
+//         "Plasma"
+//     ],
+//     "correctAnswer": "Plasma"
+// },
+// {
+//     "question": "What is the chemical symbol for gold?",
+//     "options": [
+//         "Ag",
+//         "Au",
+//         "Fe",
+//         "Hg"
+//     ],
+//     "correctAnswer": "Au"
+// },
+// {
+//     "question": "Which of the following is a chemical change?",
+//     "options": [
+//         "Melting ice",
+//         "Dissolving sugar in water",
+//         "Burning wood",
+//         "Cutting paper"
+//     ],
+//     "correctAnswer": "Burning wood"
+// },
+// {
+//     "question": "What is the smallest particle of an element that retains the properties of that element?",
+//     "options": [
+//         "Atom",
+//         "Molecule",
+//         "Compound",
+//         "Ion"
+//     ],
+//     "correctAnswer": "Atom"
+// },
+// {
+//     "question": "What is the name of the process by which a liquid changes into a gas?",
+//     "options": [
+//         "Freezing",
+//         "Melting",
+//         "Evaporation",
+//         "Condensation"
+//     ],
+//     "correctAnswer": "Evaporation"
+// },
+// {
+//     "question": "What is the pH of a neutral solution?",
+//     "options": [
+//         "0",
+//         "7",
+//         "14",
+//         "10"
+//     ],
+//     "correctAnswer": "7"
+// },
+// {
+//     "question": "Which of the following is a chemical property of a substance?",
+//     "options": [
+//         "Color",
+//         "Density",
+//         "Melting point",
+//         "Flammability"
+//     ],
+//     "correctAnswer": "Flammability"
+// },
+// {
+//     "question": "What is the name of the table that organizes all known elements?",
+//     "options": [
+//         "Periodic Table",
+//         "Element Table",
+//         "Chemical Table",
+//         "Atomic Table"
+//     ],
+//     "correctAnswer": "Periodic Table"
+// },
+// {
+//     "question": "What is the name of the force that holds atoms together in a molecule?",
+//     "options": [
+//         "Gravity",
+//         "Electromagnetic force",
+//         "Nuclear force",
+//         "Weak force"
+//     ],
+//     "correctAnswer": "Electromagnetic force"
+// },
+// {
+//     "question": "What is the name of the process by which a gas changes into a liquid?",
+//     "options": [
+//         "Evaporation",
+//         "Condensation",
+//         "Sublimation",
+//         "Freezing"
+//     ],
+//     "correctAnswer": "Condensation"
+// }
+// ]
 
 const TestAttempt = () => {
   const navigate = useNavigate();
