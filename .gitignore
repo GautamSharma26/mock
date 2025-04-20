@@ -18,6 +18,8 @@ backend/coverage.xml
 backend/htmlcov/
 backend/.pylint.d/
 backend/*.sqlite3
+backend/.newenv
+
 
 # Optional: ignore everything in backend except your app (uncomment and modify as needed)
 # backend/**/*
