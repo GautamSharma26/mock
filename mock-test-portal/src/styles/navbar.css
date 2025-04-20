@@ -1,0 +1,58 @@
+/* Ensure Navbar spans full width */
+.navbar {
+    width: calc(100% - 250px); /* Ensure it does not overlap sidebar */
+    max-width: 100vw;
+    background-color: #1a202c; /* Dark Gray */
+    padding: 12px 20px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 250px; /* Move navbar to the right of sidebar */
+    z-index: 1000;
+    overflow: hidden;
+    transition: left 0.3s ease-in-out;
+}
+
+/* Navbar Title */
+.navbar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Navbar Buttons */
+.navbar-links {
+    display: flex;
+    gap: 12px;
+}
+
+.navbar-links button {
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+.navbar-links button:hover {
+    background-color: #2d3748;
+    border-radius: 5px;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar {
+        width: 100%; /* Full width */
+        left: 0; /* Centered when sidebar is hidden */
+        padding: 10px 15px;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+}
