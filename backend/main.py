@@ -3,14 +3,17 @@ from pydantic import BaseModel
 # from langchain.llms import HuggingFaceHub
 from dotenv import load_dotenv
 import json
-from langchain_anthropic import ChatAnthropic
+# from langchain_anthropic import ChatAnthropic
 from config import settings
+from langchain_groq import ChatGroq
+
 
 import os
 import re
 load_dotenv()
 # HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACEHUB_API_TOKEN")
-os.environ["ANTHROPIC_API_KEY"] = settings.ANTHROPIC_API_KEY
+# os.environ["ANTHROPIC_API_KEY"] = settings.ANTHROPIC_API_KEY
+os.environ["GROQ_API_KEY"] = settings.ANTHROPIC_API_KEY
 # Load API Key from environment variable
 # HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 # print(settings.ANTHROPIC_API_KEY,"jsdfjksdjkffb")
@@ -18,7 +21,14 @@ os.environ["ANTHROPIC_API_KEY"] = settings.ANTHROPIC_API_KEY
 # Initialize FastAPI
 app = FastAPI()
 
-model = ChatAnthropic(model="claude-3-5-sonnet-latest", temperature=0)
+# model = ChatAnthropic(model="claude-3-5-sonnet-latest", temperature=0)
+
+model = ChatGroq(
+    model="llama-3.1-8b-instant",
+    temperature=0.0,
+    max_retries=2,
+    # other params...
+)
 # Initialize the Hugging Face model
 
 
@@ -147,10 +157,10 @@ def extract_json(response: str):
     return combined_data  # ✅ Return final extracted JSON list
 
 
-def save_to_json(data, filename="mcq_data.json"):
+def save_to_json(data, filename):
     """ Save extracted JSON data to a file """
     try:
-        save_path = os.path.join(os.path.dirname(__file__), "../mock-test-portal-main", filename)
+        save_path = os.path.join(os.path.dirname(__file__), "../mock-test-portal-main", f"{filename}_mcq_data.json")
         print(f" save path :::::{save_path}")
         with open(save_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)  # Pretty-print JSON
@@ -193,6 +203,6 @@ def generate_text(request: PromptRequest):
     
     print(":::::::Saving Json ::::::::::::::")
     
-    save_to_json(clean_response)
+    save_to_json(clean_response,subject)
 
     return clean_response  # ✅ Return extracted JSON
