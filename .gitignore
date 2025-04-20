@@ -24,18 +24,3 @@ backend/*.sqlite3
 # !backend/app/
 # !backend/app/**
 
-# === Frontend (React) ===
-mock-test-potal/node_modules/
-mock-test-potal/build/
-mock-test-potal/dist/
-mock-test-potal/.next/
-mock-test-potal/.turbo/
-mock-test-potal/.env
-mock-test-potal/.env.*
-mock-test-potal/src/*.json
-
-# Frontend logs
-mock-test-potal/npm-debug.log*
-mock-test-potal/yarn-debug.log*
-mock-test-potal/yarn-error.log*
-mock-test-potal/pnpm-debug.log*
