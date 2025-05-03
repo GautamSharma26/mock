@@ -1,27 +1,34 @@
 import React, { useEffect, useState } from "react";
 import {
-    Box, Heading, SimpleGrid, Card, CardBody, Text, Button, Input, 
-    IconButton, Flex, VStack
+    Box, Heading, SimpleGrid, Card, CardBody, Text, Button, Input,
+    IconButton, Flex, VStack, HStack
 } from "@chakra-ui/react";
-import { FaSearch, FaTimes } from "react-icons/fa"; // Import search & close icons
+import { FaSearch, FaTimes } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { mockQuestions } from "../data/mockQuestions"; // Ensure correct import
+import { mockQuestions } from "../data/mockQuestions";
 
 const mockTests = [
-    { id: 1, name: "Software Testing - Manual"},
-    { id: 2, name: "Software Testing - Automation (Selenium + Java)"},
-    { id: 3, name: "Python - Entry Level"},
-    { id: 4, name: "BPSC Teacher TRE 4.0 - Computer Fundamental"},
-    { id: 5, name: "BPSC Teacher TRE 4.0 - Programming (C, C++, Java, Python)"},
-    { id: 6, name: "BPSC Teacher TRE 4.0 - Data Structures & Algorithms"},
-    { id: 7, name: "BPSC Teacher TRE 4.0 - Database Management System"},
-    { id: 8, name: "BPSC Teacher TRE 4.0 - Networking & Security"},
-    { id: 9, name: "BPSC Teacher TRE 4.0 - Software Engineering & SDLC"},
-    { id: 10, name: "Web Technologies (HTML, CSS, JavaScript, PHP)"},
-    { id: 11, name: "Artificial Intelligence & Machine Learning"},
-    { id: 12, name: "BPSC Teacher TRE 4.0 - Teaching Methodology & Pedagogy"},
-    { id: 13, name: "BPSC Teacher TRE 4.0 - General Awareness & Aptitude"},
-    { id: 14, name: "BPSC Teacher TRE 4.0 - हिंदी भाषा"}
+    { id: 1, name: "Software Testing - Manual" },
+    { id: 2, name: "Software Testing - Automation (Selenium + Java)" },
+    { id: 3, name: "Python - Entry Level" },
+    { id: 4, name: "BPSC Teacher TRE 4.0 - Computer Fundamental" },
+    { id: 5, name: "BPSC Teacher TRE 4.0 - Programming (C, C++, Java, Python)" },
+    { id: 6, name: "BPSC Teacher TRE 4.0 - Data Structures & Algorithms" },
+    { id: 7, name: "BPSC Teacher TRE 4.0 - Database Management System" },
+    { id: 8, name: "BPSC Teacher TRE 4.0 - Networking & Security" },
+    { id: 9, name: "BPSC Teacher TRE 4.0 - Software Engineering & SDLC" },
+    { id: 10, name: "Web Technologies (HTML, CSS, JavaScript, PHP)" },
+    { id: 11, name: "Artificial Intelligence & Machine Learning" },
+    { id: 12, name: "BPSC Teacher TRE 4.0 - Teaching Methodology & Pedagogy" },
+    { id: 13, name: "BPSC Teacher TRE 4.0 - General Awareness & Aptitude" },
+    { id: 14, name: "BPSC Teacher TRE 4.0 - हिंदी भाषा" },
+    { id: 15, name: "Railway Group D - Mathematics" },
+    { id: 16, name: "Railway Group D - Reasoning" },
+    { id: 17, name: "Railway Group D - General Science" },
+    { id: 18, name: "Railway Group D - Current Affairs" },
+    
+
+
 ];
 
 const Tests = () => {
@@ -29,7 +36,9 @@ const Tests = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [updatedTests, setUpdatedTests] = useState([]);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-    const [showSearch, setShowSearch] = useState(false); // For mobile search toggle
+    const [showSearch, setShowSearch] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1); // Current page for pagination
+    const testsPerPage = 9; // Max tests per page
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -38,15 +47,14 @@ const Tests = () => {
     }, []);
 
     useEffect(() => {
-        // Calculate dynamic question count and duration
         const updatedTestList = mockTests.map((test) => {
-            const testQuestions = mockQuestions[test.id] || []; // Get questions from mockQuestions.js
+            const testQuestions = mockQuestions[test.id] || [];
             const totalQuestions = testQuestions.length;
-            const duration = totalQuestions * 2; // Each question takes 2 mins
+            const duration = totalQuestions * 2;
             return {
                 ...test,
-                questions: totalQuestions || 0, // Ensure it doesn't break
-                duration: totalQuestions > 0 ? `${duration} mins` : "N/A"
+                questions: totalQuestions || 0,
+                duration: totalQuestions > 0 ? `${duration} mins` : "N/A",
             };
         });
 
@@ -57,6 +65,17 @@ const Tests = () => {
         test.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    // Pagination logic
+    const indexOfLastTest = currentPage * testsPerPage;
+    const indexOfFirstTest = indexOfLastTest - testsPerPage;
+    const currentTests = filteredTests.slice(indexOfFirstTest, indexOfLastTest);
+
+    const totalPages = Math.ceil(filteredTests.length / testsPerPage);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
     return (
         <Box p={6}>
             {/* Header Section */}
@@ -64,17 +83,15 @@ const Tests = () => {
                 <Flex justify="space-between" align="center">
                     <Heading size="lg">Available Mock Tests</Heading>
 
-                    {/* Mobile: Toggle Search Box */}
                     {isMobile && (
                         <IconButton
-                            icon={showSearch ? <FaTimes /> : <FaSearch />} // Toggle between search & close
+                            icon={showSearch ? <FaTimes /> : <FaSearch />}
                             onClick={() => setShowSearch(!showSearch)}
                             aria-label="Toggle Search"
                         />
                     )}
                 </Flex>
 
-                {/* Mobile Search Box Appears Below Header */}
                 {isMobile && showSearch && (
                     <Flex align="center">
                         <Input
@@ -82,11 +99,10 @@ const Tests = () => {
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             flex="1"
-                        />                       
+                        />
                     </Flex>
                 )}
 
-                {/* Desktop: Search bar is always visible */}
                 {!isMobile && (
                     <Input
                         placeholder="Search for a mock test..."
@@ -99,8 +115,8 @@ const Tests = () => {
 
             {/* Display Mock Tests */}
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6} mt={4}>
-                {filteredTests.length > 0 ? (
-                    filteredTests.map((test) => (
+                {currentTests.length > 0 ? (
+                    currentTests.map((test) => (
                         <Card key={test.id} shadow="md" borderRadius="lg">
                             <CardBody>
                                 <Heading size="md">{test.name}</Heading>
@@ -117,11 +133,26 @@ const Tests = () => {
                         </Card>
                     ))
                 ) : (
-                    <Text fontSize="lg" color="red.500" textAlign="center" mt={4}>
-                        No Results Found
+                    <Text fontSize="lg" color="red.500" textAlign="center" mt={4} w={"250px"}>
+                        No Test Found For Your Search Keyword. Try Another Test..
                     </Text>
                 )}
             </SimpleGrid>
+
+            {/* Pagination */}
+            {filteredTests.length > testsPerPage && (
+                <HStack justify="center" mt={6}>
+                    {Array.from({ length: totalPages }, (_, index) => (
+                        <Button
+                            key={index + 1}
+                            onClick={() => handlePageChange(index + 1)}
+                            colorScheme={currentPage === index + 1 ? "blue" : "gray"}
+                        >
+                            {index + 1}
+                        </Button>
+                    ))}
+                </HStack>
+            )}
         </Box>
     );
 };

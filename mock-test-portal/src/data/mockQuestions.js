@@ -1,42 +1,42 @@
-const mockQuestions  = {
+const mockQuestions = {
     1: [  // Software Testing - Manual Testing & Agile Process
         { question: "What is the main objective of Manual Testing?", options: ["Eliminate developers", "Automate test cases", "Generate reports", "Find defects"], correctAnswer: "Find defects" },
-        {  question: "Which testing type is performed without test cases and documentation?", options: ["Regression Testing", "Unit Testing", "Ad-hoc Testing", "Integration Testing"], correctAnswer: "Ad-hoc Testing" },
-        {  question: "What is the first phase in the Software Testing Life Cycle (STLC)?", options: ["Test Planning", "Requirement Analysis", "Test Execution", "Test Closure"], correctAnswer: "Requirement Analysis" },
-        {  question: "Which document is prepared before executing test cases?", options: ["Bug Report", "Test Plan", "User Manual", "Traceability Matrix"], correctAnswer: "Test Plan" },
-        {  question: "Which testing is performed to check if the new code has affected existing functionality?", options: ["Performance Testing", "Regression Testing", "Smoke Testing", "Sanity Testing"], correctAnswer: "Regression Testing" },
-        {  question: "Which testing is done to verify that critical functionalities are working before proceeding with detailed testing?", options: ["Smoke Testing", "Unit Testing", "Integration Testing", "Security Testing"], correctAnswer: "Smoke Testing" },
-        {  question: "Which document links test cases to requirements?", options: ["Test Strategy", "Traceability Matrix", "Bug Report", "Test Plan"], correctAnswer: "Traceability Matrix" },
-        {  question: "What is the primary purpose of Boundary Value Analysis?", options: ["Identify functional issues", "Check non-functional aspects", "Test GUI aspects", "Test values at the boundary"], correctAnswer: "Test values at the boundary" },
-        {  question: "What is the expected result when performing Equivalence Partitioning?", options: ["Reduce test cases", "Increase defects", "Enhance UI testing", "Improve load performance"], correctAnswer: "Reduce test cases" },
-        {   question: "Which type of testing is performed by end users before release?", options: ["User Acceptance Testing (UAT)", "System Testing", "Regression Testing", "Smoke Testing"], correctAnswer: "User Acceptance Testing (UAT)" },
-        {   question: "What is the purpose of Exploratory Testing?", options: ["Find defects without predefined cases", "Measure performance", "Automate testing", "Validate UI"], correctAnswer: "Find defects without predefined cases" },
-        {   question: "In Black Box Testing, the tester focuses on:", options: ["Code", "Infrastructure", "Database", "Functionality"], correctAnswer: "Functionality" },
-        {   question: "Which testing ensures that the application is user-friendly?", options: ["Load Testing", "Unit Testing", "Security Testing", "Usability Testing"], correctAnswer: "Usability Testing" },
-        {   question: "Which defect severity level is given to a bug that causes system crashes?", options: ["Minor", "Major", "Trivial", "Critical"], correctAnswer: "Critical" },
-        {   question: "Which testing type involves verifying the interaction between different modules?", options: ["System Testing", "Unit Testing", "Sanity Testing", "Integration Testing"], correctAnswer: "Integration Testing" },
-        {   question: "What is the key difference between Sanity and Smoke Testing?", options: ["Smoke is deep testing, Sanity is basic", "Sanity is deep testing, Smoke is basic", "Both are the same", "Sanity is first, Smoke is later"], correctAnswer: "Sanity is deep testing, Smoke is basic" },
-        {   question: "Who is responsible for writing test cases in Manual Testing?", options: ["Project Manager", "Developer", "Product Owner", "Test Engineer"], correctAnswer: "Test Engineer" },
-        {   question: "Which testing phase involves test execution?", options: ["Test Planning", "Test Closure", "Test Design", "Test Implementation"], correctAnswer: "Test Implementation" },
-        {   question: "Which type of testing checks how an application behaves under heavy load?", options: ["Load Testing", "Smoke Testing", "Usability Testing", "Sanity Testing"], correctAnswer: "Load Testing" },
-        {   question: "Which Agile framework uses Sprints?", options: ["Scrum", "V-Model", "Waterfall", "Spiral"], correctAnswer: "Scrum" },
-        {   question: "Who owns the Product Backlog in Agile?", options: ["QA Team", "Development Team", "Scrum Master", "Product Owner"], correctAnswer: "Product Owner" },
-        {   question: "What is the role of a Scrum Master?", options: ["Writes test cases", "Performs regression testing", "Facilitates Scrum process", "Manages developers"], correctAnswer: "Facilitates Scrum process" },
-        {   question: "What is the maximum duration of a Sprint in Scrum?", options: ["2 weeks", "1 month", "6 weeks", "4 weeks"], correctAnswer: "4 weeks" },
-        {   question: "Which Agile meeting focuses on reviewing progress?", options: ["Retrospective", "Daily Standup", "Sprint Review", "Sprint Planning"], correctAnswer: "Sprint Review" },
-        {   question: "What is the main purpose of a Sprint Retrospective?", options: ["Estimate tasks", "Improve process", "Plan next Sprint", "Assign test cases"], correctAnswer: "Improve process" },
-        {   question: "Which Agile methodology follows a Kanban board?", options: ["V-Model", "Waterfall", "Scrum", "Kanban"], correctAnswer: "Kanban" },
-        {   question: "What is a 'User Story' in Agile?", options: ["Bug report", "Code snippet", "Test case", "Feature description"], correctAnswer: "Feature description" },
-        {   question: "What does the Agile Manifesto prioritize?", options: ["Individuals and interactions", "Strict planning", "Process adherence", "Comprehensive documentation"], correctAnswer: "Individuals and interactions" },
-        {   question: "Which meeting is held daily in Scrum?", options: ["Sprint Review", "Daily Standup", "Retrospective", "Planning"], correctAnswer: "Daily Standup" },
-        {   question: "Who can attend a Sprint Review?", options: ["Only QA Team", "Only Scrum Master", "Only Developers", "Stakeholders, Scrum Team"], correctAnswer: "Stakeholders, Scrum Team" },
-        {   question: "Which Agile principle supports continuous delivery?", options: ["Strict deadlines", "Extensive planning", "Deliver working software frequently", "Fixed requirements"], correctAnswer: "Deliver working software frequently" },
-        {   question: "What is the main goal of Test-Driven Development (TDD)?", options: ["Eliminate manual testing", "Automate all tests", "Write tests before code", "Increase test cases"], correctAnswer: "Write tests before code" },
-        {   question: "Which Agile practice helps reduce defects early?", options: ["Waterfall Development", "Late Testing", "Big Bang Integration", "Continuous Integration"], correctAnswer: "Continuous Integration" },
-        {   question: "What does 'Fail Fast' mean in Agile?", options: ["Delay bug fixing", "Ignore defects", "Reduce test cases", "Identify issues early"], correctAnswer: "Identify issues early" },
-        {   question: "Which Agile approach focuses on minimizing work in progress?", options: ["Kanban", "Scrum", "Waterfall", "Extreme Programming"], correctAnswer: "Kanban" },
-        {   question: "What is the primary responsibility of a QA in Agile?", options: ["Assign User Stories", "Manage Scrum", "Ensure software quality", "Write development code"], correctAnswer: "Ensure software quality" },
-        {   question: "Which document replaces Test Cases in Agile?", options: ["Acceptance Criteria", "Bug Report", "Detailed Test Plan", "Traceability Matrix"], correctAnswer: "Acceptance Criteria" }
+        { question: "Which testing type is performed without test cases and documentation?", options: ["Regression Testing", "Unit Testing", "Ad-hoc Testing", "Integration Testing"], correctAnswer: "Ad-hoc Testing" },
+        { question: "What is the first phase in the Software Testing Life Cycle (STLC)?", options: ["Test Planning", "Requirement Analysis", "Test Execution", "Test Closure"], correctAnswer: "Requirement Analysis" },
+        { question: "Which document is prepared before executing test cases?", options: ["Bug Report", "Test Plan", "User Manual", "Traceability Matrix"], correctAnswer: "Test Plan" },
+        { question: "Which testing is performed to check if the new code has affected existing functionality?", options: ["Performance Testing", "Regression Testing", "Smoke Testing", "Sanity Testing"], correctAnswer: "Regression Testing" },
+        { question: "Which testing is done to verify that critical functionalities are working before proceeding with detailed testing?", options: ["Smoke Testing", "Unit Testing", "Integration Testing", "Security Testing"], correctAnswer: "Smoke Testing" },
+        { question: "Which document links test cases to requirements?", options: ["Test Strategy", "Traceability Matrix", "Bug Report", "Test Plan"], correctAnswer: "Traceability Matrix" },
+        { question: "What is the primary purpose of Boundary Value Analysis?", options: ["Identify functional issues", "Check non-functional aspects", "Test GUI aspects", "Test values at the boundary"], correctAnswer: "Test values at the boundary" },
+        { question: "What is the expected result when performing Equivalence Partitioning?", options: ["Reduce test cases", "Increase defects", "Enhance UI testing", "Improve load performance"], correctAnswer: "Reduce test cases" },
+        { question: "Which type of testing is performed by end users before release?", options: ["User Acceptance Testing (UAT)", "System Testing", "Regression Testing", "Smoke Testing"], correctAnswer: "User Acceptance Testing (UAT)" },
+        { question: "What is the purpose of Exploratory Testing?", options: ["Find defects without predefined cases", "Measure performance", "Automate testing", "Validate UI"], correctAnswer: "Find defects without predefined cases" },
+        { question: "In Black Box Testing, the tester focuses on:", options: ["Code", "Infrastructure", "Database", "Functionality"], correctAnswer: "Functionality" },
+        { question: "Which testing ensures that the application is user-friendly?", options: ["Load Testing", "Unit Testing", "Security Testing", "Usability Testing"], correctAnswer: "Usability Testing" },
+        { question: "Which defect severity level is given to a bug that causes system crashes?", options: ["Minor", "Major", "Trivial", "Critical"], correctAnswer: "Critical" },
+        { question: "Which testing type involves verifying the interaction between different modules?", options: ["System Testing", "Unit Testing", "Sanity Testing", "Integration Testing"], correctAnswer: "Integration Testing" },
+        { question: "What is the key difference between Sanity and Smoke Testing?", options: ["Smoke is deep testing, Sanity is basic", "Sanity is deep testing, Smoke is basic", "Both are the same", "Sanity is first, Smoke is later"], correctAnswer: "Sanity is deep testing, Smoke is basic" },
+        { question: "Who is responsible for writing test cases in Manual Testing?", options: ["Project Manager", "Developer", "Product Owner", "Test Engineer"], correctAnswer: "Test Engineer" },
+        { question: "Which testing phase involves test execution?", options: ["Test Planning", "Test Closure", "Test Design", "Test Implementation"], correctAnswer: "Test Implementation" },
+        { question: "Which type of testing checks how an application behaves under heavy load?", options: ["Load Testing", "Smoke Testing", "Usability Testing", "Sanity Testing"], correctAnswer: "Load Testing" },
+        { question: "Which Agile framework uses Sprints?", options: ["Scrum", "V-Model", "Waterfall", "Spiral"], correctAnswer: "Scrum" },
+        { question: "Who owns the Product Backlog in Agile?", options: ["QA Team", "Development Team", "Scrum Master", "Product Owner"], correctAnswer: "Product Owner" },
+        { question: "What is the role of a Scrum Master?", options: ["Writes test cases", "Performs regression testing", "Facilitates Scrum process", "Manages developers"], correctAnswer: "Facilitates Scrum process" },
+        { question: "What is the maximum duration of a Sprint in Scrum?", options: ["2 weeks", "1 month", "6 weeks", "4 weeks"], correctAnswer: "4 weeks" },
+        { question: "Which Agile meeting focuses on reviewing progress?", options: ["Retrospective", "Daily Standup", "Sprint Review", "Sprint Planning"], correctAnswer: "Sprint Review" },
+        { question: "What is the main purpose of a Sprint Retrospective?", options: ["Estimate tasks", "Improve process", "Plan next Sprint", "Assign test cases"], correctAnswer: "Improve process" },
+        { question: "Which Agile methodology follows a Kanban board?", options: ["V-Model", "Waterfall", "Scrum", "Kanban"], correctAnswer: "Kanban" },
+        { question: "What is a 'User Story' in Agile?", options: ["Bug report", "Code snippet", "Test case", "Feature description"], correctAnswer: "Feature description" },
+        { question: "What does the Agile Manifesto prioritize?", options: ["Individuals and interactions", "Strict planning", "Process adherence", "Comprehensive documentation"], correctAnswer: "Individuals and interactions" },
+        { question: "Which meeting is held daily in Scrum?", options: ["Sprint Review", "Daily Standup", "Retrospective", "Planning"], correctAnswer: "Daily Standup" },
+        { question: "Who can attend a Sprint Review?", options: ["Only QA Team", "Only Scrum Master", "Only Developers", "Stakeholders, Scrum Team"], correctAnswer: "Stakeholders, Scrum Team" },
+        { question: "Which Agile principle supports continuous delivery?", options: ["Strict deadlines", "Extensive planning", "Deliver working software frequently", "Fixed requirements"], correctAnswer: "Deliver working software frequently" },
+        { question: "What is the main goal of Test-Driven Development (TDD)?", options: ["Eliminate manual testing", "Automate all tests", "Write tests before code", "Increase test cases"], correctAnswer: "Write tests before code" },
+        { question: "Which Agile practice helps reduce defects early?", options: ["Waterfall Development", "Late Testing", "Big Bang Integration", "Continuous Integration"], correctAnswer: "Continuous Integration" },
+        { question: "What does 'Fail Fast' mean in Agile?", options: ["Delay bug fixing", "Ignore defects", "Reduce test cases", "Identify issues early"], correctAnswer: "Identify issues early" },
+        { question: "Which Agile approach focuses on minimizing work in progress?", options: ["Kanban", "Scrum", "Waterfall", "Extreme Programming"], correctAnswer: "Kanban" },
+        { question: "What is the primary responsibility of a QA in Agile?", options: ["Assign User Stories", "Manage Scrum", "Ensure software quality", "Write development code"], correctAnswer: "Ensure software quality" },
+        { question: "Which document replaces Test Cases in Agile?", options: ["Acceptance Criteria", "Bug Report", "Detailed Test Plan", "Traceability Matrix"], correctAnswer: "Acceptance Criteria" }
     ],
     2: [  // Software Automation Testing - Selenium with Java
         { question: "Which programming language is primarily used with Selenium?", options: ["Ruby", "C#", "Python", "Java"], correctAnswer: "Java" },
@@ -208,7 +208,7 @@ const mockQuestions  = {
         { question: "Which of the following is a valid constructor in Python?", options: ["__init__", "constructor", "init", "new"], correctAnswer: "__init__" }
     ],
 
-    6:[//Data Structures & Algorithms
+    6: [//Data Structures & Algorithms
         { question: "Which data structure follows FIFO?", options: ["Graph", "Queue", "Linked List", "Stack"], correctAnswer: "Queue" },
         { question: "Which data structure follows LIFO?", options: ["Queue", "Heap", "Stack", "Tree"], correctAnswer: "Stack" },
         { question: "Which data structure is used for recursion?", options: ["Stack", "Array", "Queue", "Graph"], correctAnswer: "Stack" },
@@ -248,7 +248,7 @@ const mockQuestions  = {
         { question: "Which algorithm is used for topological sorting?", options: ["DFS", "Dijkstra’s", "Bellman-Ford", "Kahn’s Algorithm"], correctAnswer: "Kahn’s Algorithm" }
     ],
 
-    7:[ //Database Management System (DBMS
+    7: [ //Database Management System (DBMS
         { question: "Which SQL clause is used to filter records?", options: ["HAVING", "SELECT", "WHERE", "ORDER BY"], correctAnswer: "WHERE" },
         { question: "What does ACID stand for in DBMS?", options: ["Atomicity, Consistency, Isolation, Durability", "Advanced, Custom, Integration, Deployment", "Access, Control, Integrity, Data", "Add, Commit, Index, Delete"], correctAnswer: "Atomicity, Consistency, Isolation, Durability" },
         { question: "Which of the following is a NoSQL database?", options: ["MySQL", "PostgreSQL", "MongoDB", "Oracle"], correctAnswer: "MongoDB" },
@@ -286,7 +286,7 @@ const mockQuestions  = {
         { question: "Which command is used to create a backup of a database?", options: ["BACKUP DATABASE", "DUMP DATABASE", "SAVE DATABASE", "COPY DATABASE"], correctAnswer: "BACKUP DATABASE" }
     ],
 
-    8:[// Networking & Security
+    8: [// Networking & Security
         { question: "What does IP stand for in networking?", options: ["Internal Process", "Intelligent Packet", "Internet Protocol", "Internet Path"], correctAnswer: "Internet Protocol" },
         { question: "Which protocol is used to send emails?", options: ["HTTP", "FTP", "SMTP", "POP3"], correctAnswer: "SMTP" },
         { question: "Which protocol is used for secure web browsing?", options: ["FTP", "Telnet", "HTTPS", "SMTP"], correctAnswer: "HTTPS" },
@@ -319,7 +319,7 @@ const mockQuestions  = {
         { question: "Which device is used to connect different networks?", options: ["Router", "Switch", "Hub", "Repeater"], correctAnswer: "Router" },
     ],
 
-    9:[ // Software Engineering & SDLC
+    9: [ // Software Engineering & SDLC
         { question: "What does SDLC stand for?", options: ["Software Data and Logic Cycle", "System Design and Logical Coding", "Software Deployment and Lifecycle Control", "Software Development Life Cycle"], correctAnswer: "Software Development Life Cycle" },
         { question: "Which SDLC model is known as the 'classic' life cycle model?", options: ["RAD Model", "V-Model", "Waterfall Model", "Agile Model"], correctAnswer: "Waterfall Model" },
         { question: "Which SDLC phase involves requirement gathering?", options: ["Coding", "Testing", "Requirement Analysis", "Design"], correctAnswer: "Requirement Analysis" },
@@ -353,7 +353,7 @@ const mockQuestions  = {
         { question: "Which role defines user requirements in Agile?", options: ["Developer", "Product Owner", "Tester", "Scrum Master"], correctAnswer: "Product Owner" }
     ],
 
-    10:[ //Web Technologies (HTML, CSS, JavaScript, PHP)
+    10: [ //Web Technologies (HTML, CSS, JavaScript, PHP)
         { question: "What does HTML stand for?", options: ["HyperText Machine Language", "Hyperlink Markup Language", "HyperText Markup Language", "High-Level Text Management Language"], correctAnswer: "HyperText Markup Language" },
         { question: "Which tag is used to create a hyperlink in HTML?", options: ["<link>", "<href>", "<a>", "<h1>"], correctAnswer: "<a>" },
         { question: "Which HTML tag is used to define an unordered list?", options: ["<ul>", "<ol>", "<list>", "<li>"], correctAnswer: "<ul>" },
@@ -382,7 +382,7 @@ const mockQuestions  = {
         { question: "Which JavaScript function is used to convert a string to lowercase?", options: ["lowercase()", "convertLower()", "toLowerCase()", "toLower()"], correctAnswer: "toLowerCase()" }
     ],
 
-    11:[//Artificial Intelligence & Machine Learning
+    11: [//Artificial Intelligence & Machine Learning
         { question: "What is the main goal of Artificial Intelligence?", options: ["To generate reports", "To replace humans", "To automate repetitive tasks", "To simulate human intelligence"], correctAnswer: "To simulate human intelligence" },
         { question: "Which branch of AI focuses on teaching machines to learn from data?", options: ["Expert Systems", "Robotics", "Machine Learning", "Neural Networks"], correctAnswer: "Machine Learning" },
         { question: "Which algorithm is used for supervised learning?", options: ["K-Means", "DBSCAN", "Decision Tree", "Apriori"], correctAnswer: "Decision Tree" },
@@ -410,7 +410,7 @@ const mockQuestions  = {
         { question: "What is the main challenge of deep learning?", options: ["Slow processing speed", "Need for large datasets", "Lack of algorithms", "Too many features"], correctAnswer: "Need for large datasets" }
     ],
 
-    12:[//Teaching Methodology & Pedagogy
+    12: [//Teaching Methodology & Pedagogy
         { question: "What is pedagogy?", options: ["A learning style", "A classroom management technique", "A type of student assessment", "The art and science of teaching"], correctAnswer: "The art and science of teaching" },
         { question: "Which teaching method focuses on hands-on learning?", options: ["Lecture Method", "Experiential Learning", "Drill & Practice", "Demonstration"], correctAnswer: "Experiential Learning" },
         { question: "Which learning theory emphasizes learning through reinforcement?", options: ["Constructivism", "Humanism", "Cognitivism", "Behaviorism"], correctAnswer: "Behaviorism" },
@@ -437,7 +437,7 @@ const mockQuestions  = {
         { question: "Which of the following promotes a positive learning environment?", options: ["Strict Punishment", "Competition Among Students", "Respect and Collaboration", "Ignoring Student Needs"], correctAnswer: "Respect and Collaboration" }
     ],
 
-    13:[//General Awareness & Aptitude
+    13: [//General Awareness & Aptitude
         { question: "Who is known as the Father of the Indian Constitution?", options: ["Jawaharlal Nehru", "Sardar Patel", "Mahatma Gandhi", "B.R. Ambedkar"], correctAnswer: "B.R. Ambedkar" },
         { question: "What is the capital of France?", options: ["Berlin", "London", "Paris", "Madrid"], correctAnswer: "Paris" },
         { question: "Which planet is known as the Red Planet?", options: ["Venus", "Saturn", "Mars", "Jupiter"], correctAnswer: "Mars" },
@@ -472,7 +472,7 @@ const mockQuestions  = {
         { question: "Which instrument is used to measure temperature?", options: ["Altimeter", "Thermometer", "Hygrometer", "Barometer"], correctAnswer: "Thermometer" }
     ],
 
-    14:[//Hindi Language Teache
+    14: [//Hindi Language Teache
         { question: "हिंदी भाषा का मूल स्रोत कौन सा है?", options: ["पर्शियन", "संस्कृत", "अरबी", "तुर्की"], correctAnswer: "संस्कृत" },
         { question: "हिंदी को भारत की राजभाषा कब घोषित किया गया?", options: ["14 सितंबर 1949", "26 जनवरी 1950", "15 अगस्त 1947", "2 अक्टूबर 1952"], correctAnswer: "14 सितंबर 1949" },
         { question: "हिंदी भाषा किस लिपि में लिखी जाती है?", options: ["रोमन", "देवनागरी", "गुरुमुखी", "उर्दू"], correctAnswer: "देवनागरी" },
@@ -495,9 +495,121 @@ const mockQuestions  = {
         { question: "‘पुस्तक पढ़ना’ में कौन-सा संधि है?", options: ["व्यंजन", "स्वर", "गुण", "यण"], correctAnswer: "गुण" },
         { question: "‘निराला’ का मूल नाम क्या था?", options: ["सुमित्रानंदन पंत", "हरिवंश राय बच्चन", "सूर्यकांत त्रिपाठी", "रामधारी सिंह"], correctAnswer: "सूर्यकांत त्रिपाठी" },
         { question: "‘गीतांजलि’ किस भाषा में लिखी गई है?", options: ["मराठी", "बंगाली", "हिंदी", "संस्कृत"], correctAnswer: "बंगाली" }
-    ]
+    ],
 
+    15: [ // Railway Group D - Mathematics
+        { question: "What is the square root of 144?", options: ["10", "12", "14", "16"], correctAnswer: "12" },
+        { question: "What is the value of 15 × 12?", options: ["150", "180", "200", "225"], correctAnswer: "180" },
+        { question: "What is the HCF of 24 and 36?", options: ["6", "8", "12", "18"], correctAnswer: "12" },
+        { question: "What is the LCM of 4, 6, and 8?", options: ["12", "18", "24", "36"], correctAnswer: "24" },
+        { question: "If a train travels 60 km in 1 hour, how far will it travel in 3 hours?", options: ["120 km", "150 km", "180 km", "200 km"], correctAnswer: "180 km" },
+        { question: "What is the value of 25% of 200?", options: ["25", "50", "75", "100"], correctAnswer: "50" },
+        { question: "What is the simple interest on ₹1000 at 5% per annum for 2 years?", options: ["₹50", "₹100", "₹150", "₹200"], correctAnswer: "₹100" },
+        { question: "What is the area of a rectangle with length 10 m and breadth 5 m?", options: ["50 m²", "60 m²", "40 m²", "70 m²"], correctAnswer: "50 m²" },
+        { question: "What is the perimeter of a square with side 8 cm?", options: ["16 cm", "24 cm", "32 cm", "40 cm"], correctAnswer: "32 cm" },
+        { question: "What is the value of 2³?", options: ["6", "8", "9", "12"], correctAnswer: "8" },
+        { question: "If the cost of 5 pens is ₹50, what is the cost of 1 pen?", options: ["₹5", "₹8", "₹10", "₹12"], correctAnswer: "₹10" },
+        { question: "What is the average of 10, 20, and 30?", options: ["10", "20", "30", "40"], correctAnswer: "20" },
+        { question: "What is the value of 45 ÷ 5?", options: ["5", "7", "9", "11"], correctAnswer: "9" },
+        { question: "What is the value of 7²?", options: ["42", "47", "49", "56"], correctAnswer: "49" },
+        { question: "What is the sum of the angles in a triangle?", options: ["90°", "180°", "270°", "360°"], correctAnswer: "180°" },
+        { question: "What is the value of 100 ÷ 4?", options: ["20", "25", "30", "40"], correctAnswer: "25" },
+        { question: "If a man earns ₹5000 per month, how much will he earn in a year?", options: ["₹50,000", "₹60,000", "₹70,000", "₹80,000"], correctAnswer: "₹60,000" },
+        { question: "What is the value of 15% of 300?", options: ["30", "45", "60", "75"], correctAnswer: "45" },
+        { question: "What is the value of 1/2 + 1/3?", options: ["2/5", "5/6", "3/5", "4/5"], correctAnswer: "5/6" },
+        { question: "What is the value of 3 × (4 + 5)?", options: ["12", "15", "27", "30"], correctAnswer: "27" },
+        { question: "What is the cube root of 27?", options: ["2", "3", "4", "5"], correctAnswer: "3" },
+        { question: "If a man walks 5 km in 1 hour, how far will he walk in 3 hours?", options: ["10 km", "15 km", "20 km", "25 km"], correctAnswer: "15 km" },
+        { question: "What is the value of 50% of 80?", options: ["30", "35", "40", "45"], correctAnswer: "40" },
+        { question: "What is the perimeter of a rectangle with length 12 m and breadth 8 m?", options: ["20 m", "40 m", "48 m", "60 m"], correctAnswer: "40 m" },
+        { question: "If the cost of 12 apples is ₹240, what is the cost of 1 apple?", options: ["₹10", "₹15", "₹20", "₹25"], correctAnswer: "₹20" }
+    ],
 
+    16: [ // Railway Group D - Reasoning
+        { question: "What comes next in the series: 2, 4, 8, 16, ?", options: ["20", "24", "32", "40"], correctAnswer: "32" },
+        { question: "If A is coded as 1, B as 2, and so on, what is the code for 'CAT'?", options: ["24", "27", "29", "30"], correctAnswer: "24" },
+        { question: "Which word does not belong to the group: Apple, Mango, Banana, Carrot?", options: ["Apple", "Mango", "Banana", "Carrot"], correctAnswer: "Carrot" },
+        { question: "If 5 + 3 = 28 and 7 + 2 = 63, what is 6 + 4?", options: ["40", "64", "60", "48"], correctAnswer: "40" },
+        { question: "What is the missing number in the series: 1, 4, 9, 16, ?", options: ["20", "25", "30", "36"], correctAnswer: "25" },
+        { question: "If 'DOG' is coded as 'EPI', how is 'CAT' coded?", options: ["DBU", "DBV", "DBW", "DCU"], correctAnswer: "DBU" },
+        { question: "Which number is odd one out: 2, 4, 6, 9, 10?", options: ["2", "4", "6", "9"], correctAnswer: "9" },
+        { question: "If 3 × 2 = 6 and 4 × 3 = 12, what is 5 × 4?", options: ["15", "20", "25", "30"], correctAnswer: "20" },
+        { question: "Which shape does not belong to the group: Circle, Triangle, Square, Rectangle?", options: ["Circle", "Triangle", "Square", "Rectangle"], correctAnswer: "Circle" },
+        { question: "What is the missing letter in the series: A, C, E, G, ?", options: ["H", "I", "J", "K"], correctAnswer: "I" },
+        { question: "If 'PEN' is coded as 'QFO', how is 'BOOK' coded?", options: ["CPPL", "CPLL", "CPLM", "CQPL"], correctAnswer: "CPLL" },
+        { question: "Which number is the odd one out: 121, 144, 169, 225?", options: ["121", "144", "169", "225"], correctAnswer: "225" },
+        { question: "What comes next in the series: 5, 10, 20, 40, ?", options: ["50", "60", "80", "100"], correctAnswer: "80" },
+        { question: "If 'CAR' is coded as 'DBS', how is 'BIKE' coded?", options: ["CJLF", "CJMF", "CJLE", "CJME"], correctAnswer: "CJLF" },
+        { question: "Which word does not belong to the group: Chair, Table, Bed, Fan?", options: ["Chair", "Table", "Bed", "Fan"], correctAnswer: "Fan" },
+        { question: "If 2 + 3 = 10 and 4 + 5 = 40, what is 6 + 7?", options: ["60", "70", "80", "90"], correctAnswer: "90" },
+        { question: "What is the missing number in the series: 2, 6, 12, 20, ?", options: ["28", "30", "32", "36"], correctAnswer: "30" },
+        { question: "If 'TREE' is coded as 'USFF', how is 'PLANT' coded?", options: ["QMBNU", "QMBOV", "QMBNU", "QMBMU"], correctAnswer: "QMBNU" },
+        { question: "Which number is the odd one out: 64, 81, 100, 121?", options: ["64", "81", "100", "121"], correctAnswer: "81" },
+        { question: "What comes next in the series: 1, 3, 6, 10, ?", options: ["12", "14", "15", "16"], correctAnswer: "15" },
+        { question: "What comes next in the series: 3, 6, 11, 18, ?", options: ["25", "27", "29", "31"], correctAnswer: "29" },
+        { question: "If 'BALL' is coded as 'CZMM', how is 'GAME' coded?", options: ["HBNF", "HBMF", "HBNE", "HBNG"], correctAnswer: "HBNF" },
+        { question: "Which number is the odd one out: 36, 49, 64, 81?", options: ["36", "49", "64", "81"], correctAnswer: "49" },
+        { question: "If 8 × 2 = 164 and 6 × 3 = 936, what is 7 × 4?", options: ["284", "374", "284", "374"], correctAnswer: "284" },
+        { question: "Which word does not belong to the group: Dog, Cat, Cow, Chair?", options: ["Dog", "Cat", "Cow", "Chair"], correctAnswer: "Chair" }
+    ],
+
+    17: [ // Railway Group D - General Science
+        { question: "What is the chemical symbol for water?", options: ["H2O", "O2", "CO2", "NaCl"], correctAnswer: "H2O" },
+        { question: "Which gas is most abundant in Earth's atmosphere?", options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"], correctAnswer: "Nitrogen" },
+        { question: "What is the SI unit of temperature?", options: ["Celsius", "Fahrenheit", "Kelvin", "Rankine"], correctAnswer: "Kelvin" },
+        { question: "Which planet is known as the 'Blue Planet'?", options: ["Mars", "Earth", "Neptune", "Venus"], correctAnswer: "Earth" },
+        { question: "What is the process by which plants make their food?", options: ["Respiration", "Photosynthesis", "Transpiration", "Fermentation"], correctAnswer: "Photosynthesis" },
+        { question: "What is the boiling point of water at sea level?", options: ["90°C", "100°C", "110°C", "120°C"], correctAnswer: "100°C" },
+        { question: "Which vitamin is essential for blood clotting?", options: ["Vitamin A", "Vitamin B", "Vitamin K", "Vitamin D"], correctAnswer: "Vitamin K" },
+        { question: "What is the hardest natural substance on Earth?", options: ["Gold", "Iron", "Diamond", "Platinum"], correctAnswer: "Diamond" },
+        { question: "Which organ in the human body is responsible for filtering blood?", options: ["Liver", "Kidney", "Heart", "Lungs"], correctAnswer: "Kidney" },
+        { question: "What is the chemical formula for table salt?", options: ["NaCl", "KCl", "CaCl2", "MgCl2"], correctAnswer: "NaCl" },
+        { question: "Which part of the cell is known as the 'powerhouse'?", options: ["Nucleus", "Mitochondria", "Ribosome", "Golgi Apparatus"], correctAnswer: "Mitochondria" },
+        { question: "What is the pH value of pure water?", options: ["5", "6", "7", "8"], correctAnswer: "7" },
+        { question: "Which gas is released during photosynthesis?", options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"], correctAnswer: "Oxygen" },
+        { question: "What is the main component of the Sun?", options: ["Oxygen", "Hydrogen", "Helium", "Carbon"], correctAnswer: "Hydrogen" },
+        { question: "Which metal is used in making thermometers?", options: ["Iron", "Mercury", "Copper", "Aluminum"], correctAnswer: "Mercury" },
+        { question: "What is the unit of electric current?", options: ["Volt", "Ampere", "Ohm", "Watt"], correctAnswer: "Ampere" },
+        { question: "Which organ in the human body produces insulin?", options: ["Liver", "Pancreas", "Kidney", "Stomach"], correctAnswer: "Pancreas" },
+        { question: "What is the chemical formula for carbon dioxide?", options: ["CO", "CO2", "C2O", "C2O2"], correctAnswer: "CO2" },
+        { question: "Which gas is known as 'laughing gas'?", options: ["Nitrogen", "Nitrous Oxide", "Carbon Monoxide", "Oxygen"], correctAnswer: "Nitrous Oxide" },
+        { question: "What is the speed of light in a vacuum?", options: ["3 × 10^8 m/s", "3 × 10^6 m/s", "3 × 10^5 m/s", "3 × 10^7 m/s"], correctAnswer: "3 × 10^8 m/s" },
+        { question: "Which vitamin is produced in the skin when exposed to sunlight?", options: ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"], correctAnswer: "Vitamin D" },
+        { question: "What is the smallest unit of life?", options: ["Tissue", "Organ", "Cell", "Molecule"], correctAnswer: "Cell" },
+        { question: "Which element is used in making pencils?", options: ["Graphite", "Lead", "Carbon", "Zinc"], correctAnswer: "Graphite" },
+        { question: "What is the main function of red blood cells?", options: ["Fight infections", "Transport oxygen", "Clot blood", "Produce hormones"], correctAnswer: "Transport oxygen" },
+        { question: "Which part of the human brain controls balance and coordination?", options: ["Cerebrum", "Cerebellum", "Medulla", "Hypothalamus"], correctAnswer: "Cerebellum" }
+    ],
+
+    18: [ // GK/GS (Current Affairs)
+        { question: "Who won the Nobel Peace Prize in 2024?", options: ["Greta Thunberg", "Volodymyr Zelenskyy", "World Health Organization", "Malala Yousafzai"], correctAnswer: "Volodymyr Zelenskyy" },
+        { question: "Which country hosted the 2024 Summer Olympics?", options: ["Japan", "France", "USA", "China"], correctAnswer: "France" },
+        { question: "Who is the current President of the United States (2025)?", options: ["Joe Biden", "Donald Trump", "Kamala Harris", "Ron DeSantis"], correctAnswer: "Joe Biden" },
+        { question: "Which Indian state launched the 'Green Energy Corridor' project in 2024?", options: ["Gujarat", "Rajasthan", "Tamil Nadu", "Maharashtra"], correctAnswer: "Rajasthan" },
+        { question: "What is the theme of World Environment Day 2024?", options: ["Beat Plastic Pollution", "Restore Our Earth", "Ecosystem Restoration", "Clean Energy for All"], correctAnswer: "Beat Plastic Pollution" },
+        { question: "Which country won the ICC Cricket World Cup 2023?", options: ["India", "Australia", "England", "New Zealand"], correctAnswer: "India" },
+        { question: "Who is the current Chief Justice of India (2025)?", options: ["D.Y. Chandrachud", "N.V. Ramana", "U.U. Lalit", "Sanjay Kishan Kaul"], correctAnswer: "D.Y. Chandrachud" },
+        { question: "Which Indian city was declared the cleanest city in the Swachh Survekshan 2024?", options: ["Indore", "Surat", "Bhopal", "Ahmedabad"], correctAnswer: "Indore" },
+        { question: "Which country launched the 'Artemis II' mission to the Moon in 2024?", options: ["Russia", "China", "USA", "India"], correctAnswer: "USA" },
+        { question: "Who won the Ballon d'Or award in 2024?", options: ["Lionel Messi", "Cristiano Ronaldo", "Kylian Mbappé", "Erling Haaland"], correctAnswer: "Lionel Messi" },
+        { question: "Which Indian state launched the 'Digital India Land Records Modernization Program' in 2024?", options: ["Uttar Pradesh", "Karnataka", "Madhya Pradesh", "Bihar"], correctAnswer: "Uttar Pradesh" },
+        { question: "Which country became the newest member of BRICS in 2024?", options: ["Saudi Arabia", "Argentina", "Iran", "All of the above"], correctAnswer: "All of the above" },
+        { question: "Who is the current Secretary-General of the United Nations (2025)?", options: ["António Guterres", "Ban Ki-moon", "Kofi Annan", "Kristalina Georgieva"], correctAnswer: "António Guterres" },
+        { question: "Which Indian film won the Best International Feature Film at the Oscars 2024?", options: ["RRR", "The Elephant Whisperers", "Jai Bhim", "Kantara"], correctAnswer: "The Elephant Whisperers" },
+        { question: "Which country launched the 'Digital Euro' in 2024?", options: ["Germany", "France", "European Union", "Italy"], correctAnswer: "European Union" },
+        { question: "Who is the current Prime Minister of the United Kingdom (2025)?", options: ["Rishi Sunak", "Boris Johnson", "Keir Starmer", "Liz Truss"], correctAnswer: "Rishi Sunak" },
+        { question: "Which Indian state launched the 'Mission School of Excellence' in 2024?", options: ["Gujarat", "Kerala", "Punjab", "West Bengal"], correctAnswer: "Gujarat" },
+        { question: "Which country hosted the G20 Summit in 2024?", options: ["India", "Brazil", "South Africa", "Indonesia"], correctAnswer: "Brazil" },
+        { question: "Who is the current Chairperson of ISRO (2025)?", options: ["S. Somanath", "K. Sivan", "A.S. Kiran Kumar", "G. Madhavan Nair"], correctAnswer: "S. Somanath" },
+        { question: "Which Indian state topped the 'Ease of Doing Business' rankings in 2024?", options: ["Andhra Pradesh", "Gujarat", "Karnataka", "Maharashtra"], correctAnswer: "Andhra Pradesh" },
+        { question: "Which country launched the first 6G satellite in 2024?", options: ["USA", "China", "Japan", "India"], correctAnswer: "China" },
+        { question: "Who won the FIFA Women's World Cup 2023?", options: ["USA", "Spain", "England", "Germany"], correctAnswer: "Spain" },
+        { question: "Which Indian state launched the 'Mukhyamantri Krishi Aashirwad Yojana' in 2024?", options: ["Jharkhand", "Odisha", "Chhattisgarh", "Bihar"], correctAnswer: "Jharkhand" },
+        { question: "Which Indian city hosted the Pravasi Bharatiya Divas 2024?", options: ["Indore", "Varanasi", "Ahmedabad", "Bengaluru"], correctAnswer: "Ahmedabad" },
+        { question: "Which country became the largest producer of renewable energy in 2024?", options: ["India", "China", "USA", "Germany"], correctAnswer: "China" }
+    ],
+
+    
 };
 
 export { mockQuestions };

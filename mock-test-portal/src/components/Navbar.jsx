@@ -28,6 +28,16 @@ const Navbar = ({ isSidebarOpen }) => {
           </Button>
         </Flex>
       </Flex>
+      {/* Add Privacy Policy and Terms & Conditions links */}
+      {/* <Flex justifyContent="center" mt={4} direction="column" alignItems="center">
+        <ChakraLink as={Link} to="/privacy-policy" fontSize="sm" color="gray.500" mb={2}>
+          Privacy Policy
+        </ChakraLink>
+        <ChakraLink as={Link} to="/terms-conditions" fontSize="sm" color="gray.500">
+          Terms & Conditions
+        </ChakraLink>
+      </Flex> */}
+
     </Box>
   );
 };

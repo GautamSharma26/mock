@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
     Box,
     Heading,
@@ -6,13 +6,31 @@ import {
     Stat,
     StatLabel,
     StatNumber,
-    useColorModeValue
+    useColorModeValue,
+    Button,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Input,
+    Textarea,
+    VStack,
+    useDisclosure,
+    useToast,
+    Flex,
+    ModalCloseButton,
 } from "@chakra-ui/react";
 import DashboardCharts from "../components/DashboardCharts"; // ✅ Chart section import
+import emailjs from "@emailjs/browser"; // Import EmailJS
 
 const Home = () => {
     const [testStats, setTestStats] = useState({ totalTests: 0, avgScore: 0, bestScore: 0 });
     const [pastResults, setPastResults] = useState([]);
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const form = useRef(); // Use ref for the form
+    const toast = useToast(); // Initialize Chakra UI toast
 
     useEffect(() => {
         const results = JSON.parse(localStorage.getItem("testResults")) || [];
@@ -25,19 +43,65 @@ const Home = () => {
 
         setTestStats({ totalTests, avgScore, bestScore });
 
-        // Alert if it's been more than 3 days since last test
+        // Alert if it's been more than 10 days since last test
         if (results.length > 0) {
             const lastTestDate = new Date(results[results.length - 1].timestamp);
             const daysSinceLastTest = (new Date() - lastTestDate) / (1000 * 60 * 60 * 24);
-            if (daysSinceLastTest > 3) {
-                alert("It's been a while since your last test! Keep practicing.");
+            if (daysSinceLastTest > 10) {
+                toast({
+                    title: "Reminder",
+                    description: "It's been a while since your last test! Keep practicing.",
+                    status: "info",
+                    duration: 3000,
+                    isClosable: true,
+                });
             }
         }
     }, []);
 
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs
+            .sendForm(
+                "service_3auufg8", // Replace with your EmailJS service ID
+                "template_9hyy3ko", // Replace with your EmailJS template ID
+                form.current,
+                "rXtrcX9RwBXaEwCT8" // Replace with your EmailJS public key
+            )
+            .then(
+                (response) => {
+                    console.log("SUCCESS!", response.status, response.text);
+                    toast({
+                        title: "Feedback Sent",
+                        description: "Your feedback has been sent successfully!",
+                        status: "success",
+                        duration: 3000,
+                        isClosable: true,
+                    });
+                    onClose();
+                },
+                (error) => {
+                    console.error("FAILED...", error);
+                    toast({
+                        title: "Failed to Send Feedback",
+                        description: "An error occurred while sending your feedback. Please try again.",
+                        status: "error",
+                        duration: 3000,
+                        isClosable: true,
+                    });
+                }
+            );
+    };
+
     return (
         <Box p={6}>
-            <Heading mb={4} color="white">Dashboard</Heading>
+            <Flex justify="space-between" align="center" mb={4}>
+                <Heading color="white">Dashboard</Heading>
+                <Button colorScheme="blue" onClick={onOpen}>
+                    Share Feedback
+                </Button>
+            </Flex>
 
             {/* Stat Boxes */}
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
@@ -48,6 +112,39 @@ const Home = () => {
 
             {/* Chart Section with dynamic data */}
             <DashboardCharts testResults={pastResults} />
+
+            {/* Feedback Modal */}
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Share Feedback</ModalHeader>
+                    <ModalCloseButton /> {/* Close "X" button */}
+                    <ModalBody>
+                        <form ref={form} onSubmit={sendEmail}>
+                            <VStack spacing={4}>
+                                <Input
+                                    placeholder="Your Name"
+                                    name="user_name" // Name attribute for EmailJS
+                                    required
+                                />
+                                <Textarea
+                                    placeholder="Enter your feedback here..."
+                                    name="message" // Name attribute for EmailJS
+                                    required
+                                />
+                            </VStack>
+                            <ModalFooter>
+                                <Button colorScheme="blue" mr={3} type="submit">
+                                    Submit
+                                </Button>
+                                <Button variant="ghost" onClick={onClose}>
+                                    Cancel
+                                </Button>
+                            </ModalFooter>
+                        </form>
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
         </Box>
     );
 };

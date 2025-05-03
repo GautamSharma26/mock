@@ -26,6 +26,7 @@
 .navbar-links {
     display: flex;
     gap: 12px;
+    margin-bottom: 28px;
 }
 
 .navbar-links button {
@@ -56,3 +57,16 @@
         margin-top: 10px;
     }
 }
+
+
+/* filepath: d:\Learning\MockTest\MockTest_Latest\mock\mock-test-portal\src\styles\navbar.css */
+.navbar-links a {
+    color: inherit; /* Ensure the text color is visible */
+    text-decoration: none;
+  }
+  
+  .navbar-links a:hover {
+    color: #007bff; /* Add hover effect for better visibility */
+  }
+
+  

@@ -18,6 +18,7 @@ const NavItem = ({ to, icon, label, onClose }) => {
                 display="flex"
                 alignItems="center"
                 p={3}
+                mb={2}
                 borderRadius="md"
                 bg={isActive ? "white" : "transparent"}
                 color={isActive ? "black" : "white"}
@@ -32,17 +33,50 @@ const NavItem = ({ to, icon, label, onClose }) => {
 
 /* Sidebar */
 const SidebarContent = ({ onClose }) => (
-    <VStack spacing={4} align="start" p={5} mt="10px" w="200px">
-        <Text fontSize={{ base: "md", lg: "xl" }} fontWeight="bold" color="white">
-            🏆 Mock Test Portal
+    <VStack
+        spacing={4}
+        align="start"
+        p={5}
+        mt="10px"
+        w="100%"
+        h="95vh" // Full height for the sidebar
+        justifyContent="space-between" // Push content to top and bottom
+    >
+        {/* Top Section */}
+        <Box>
+            <Text fontSize={{ base: "md", lg: "xl" }} fontWeight="bold" color="white" mb={5}>
+                🏆 Mock Test Portal
+            </Text>
+
+            <NavItem to="/dashboard" icon={FaHome} label="Home" onClose={onClose} />
+            <NavItem to="/tests" icon={FaClipboardList} label="Tests" onClose={onClose} />
+            <NavItem to="/results" icon={FaChartBar} label="Results" onClose={onClose} />
+            <NavItem to="/profile" icon={FaUser} label="Profile" onClose={onClose} />
+            <LogoutButton /> {/* Logout Button */}
+        </Box>
+
+        {/* Bottom Section */}
+        <Text fontSize="sm" color="gray" textAlign="center" mb={-40} fontWeight="bold">
+            Version 0.2
         </Text>
-        <NavItem to="/dashboard" icon={FaHome} label="Home" onClose={onClose} />
-        <NavItem to="/tests" icon={FaClipboardList} label="Tests" onClose={onClose} />
-        <NavItem to="/results" icon={FaChartBar} label="Results" onClose={onClose} />
-        <NavItem to="/profile" icon={FaUser} label="Profile" onClose={onClose} />
-         {/* Logout Button */}
-         <LogoutButton /> {/* 👈 Add this below navigation items */}
-       {/* <NavItem to="/leaderboard" icon={FaTrophy} label="Leaderboard" onClose={onClose} />*/}
+        <Box pt={4} borderTop="1px solid gray" w="100%">
+            <Text
+                fontSize="sm"
+                color="gray.400"
+                _hover={{ color: "white", cursor: "pointer" }}
+                onClick={() => (window.location.href = "/privacy-policy.html")}
+            >
+                Privacy Policy
+            </Text>
+            <Text
+                fontSize="sm"
+                color="gray.400"
+                _hover={{ color: "white", cursor: "pointer" }}
+                onClick={() => (window.location.href = "/terms-conditions.html")}
+            >
+                Terms & Conditions
+            </Text>
+        </Box>
     </VStack>
 );
 
@@ -84,12 +118,12 @@ const DashboardLayout = ({ children }) => {
             )}
 
             {/* Main Content Area */}
-            <Box 
+            <Box
                 flex="1"
-                ml={isMobile ? "0" : "250px"} 
-                p={{ base: "0px", md: "20px" }} 
+                ml={isMobile ? "0" : "250px"}
+                p={{ base: "0px", md: "20px" }}
                 mt={{ base: "50px", md: "0px" }}
-                w="calc(100% - 250px)" // Ensure proper width
+                w="calc(100% - 200px)" // Ensure proper width
             >
                 {/* Mobile Header */}
                 {isMobile && (

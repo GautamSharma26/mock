@@ -1,10 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Box, Heading, Text, Button, VStack, Divider } from "@chakra-ui/react";
+import React, { useRef, useState } from "react";
+import {
+  Box, Heading, Text, Button, VStack, Divider, useColorModeValue,
+  Link, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, Input, Textarea, useDisclosure, useToast
+} from "@chakra-ui/react";
 import { useLocation, useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser"; // Import EmailJS
 
 const Results = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const form = useRef(); // Use ref for the form
+  const toast = useToast(); // Initialize Chakra UI toast
+
   const {
     userName,
     score,
@@ -23,10 +31,45 @@ const Results = () => {
 
   const [pastResults, setPastResults] = useState([]);
 
-  useEffect(() => {
-    const storedResults = JSON.parse(localStorage.getItem("testResults")) || [];
-    setPastResults(storedResults.reverse()); // Show the latest results first
-  }, []);
+  // Define colors for light and dark modes
+  const questionTextColor = useColorModeValue("gray.800", "gray.200");
+  const correctAnswerBg = useColorModeValue("green.50", "green.900");
+  const incorrectAnswerBg = useColorModeValue("red.50", "red.900");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_3auufg8", // Replace with your EmailJS service ID
+        "template_9hyy3ko", // Replace with your EmailJS template ID
+        form.current,
+        "rXtrcX9RwBXaEwCT8" // Replace with your EmailJS public key
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          toast({
+            title: "Feedback Sent",
+            description: "Your feedback has been sent successfully!",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
+          onClose();
+        },
+        (error) => {
+          console.error("FAILED...", error);
+          toast({
+            title: "Failed to Send Feedback",
+            description: "An error occurred while sending your feedback. Please try again.",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
+        }
+      );
+  };
 
   return (
     <Box p={6} textAlign="center">
@@ -48,9 +91,11 @@ const Results = () => {
             borderRadius="md"
             w="100%"
             textAlign="left"
-            bg={response.isCorrect ? "green.50" : "red.50"}
+            bg={response.isCorrect ? correctAnswerBg : incorrectAnswerBg}
           >
-            <Text fontWeight="bold">{index + 1}. {response.question}</Text>
+            <Text fontWeight="bold" color={questionTextColor}>
+              {index + 1}. {response.question}
+            </Text>
             <Text color={response.isCorrect ? "green.500" : "red.500"}>
               Your Answer: {response.selectedAnswer}
             </Text>
@@ -60,6 +105,13 @@ const Results = () => {
           </Box>
         ))}
       </VStack>
+
+      <Text mt={4} fontSize="sm" color="gray.500">
+        If you find any incorrect answer that you believe is correct, you can{" "}
+        <Link color="blue.500" onClick={onOpen}>
+          Share Feedback
+        </Link>.
+      </Text>
 
       <Button mt={6} colorScheme="blue" onClick={() => navigate("/tests")}>Retake Test</Button>
 
@@ -78,6 +130,36 @@ const Results = () => {
           <Text>No past test results found.</Text>
         )}
       </VStack>
+
+      {/* Feedback Modal */}
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Share Feedback</ModalHeader>
+          <ModalBody>
+            <form ref={form} onSubmit={sendEmail}>
+              <VStack spacing={4}>
+                <Input
+                  placeholder="Your Name"
+                  name="user_name" // Name attribute for EmailJS
+                  required
+                />
+                <Textarea
+                  placeholder="Enter your feedback here..."
+                  name="message" // Name attribute for EmailJS
+                  required
+                />
+              </VStack>
+              <ModalFooter>
+                <Button colorScheme="blue" mr={3} type="submit">
+                  Submit
+                </Button>
+                <Button variant="ghost" onClick={onClose}>Cancel</Button>
+              </ModalFooter>
+            </form>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };

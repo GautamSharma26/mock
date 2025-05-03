@@ -39,7 +39,7 @@ const DashboardCharts = ({ testResults }) => {
     if (!testResults || testResults.length === 0) {
         return (
             <Box p={6} textAlign="center" color="gray.500">
-                No test results available to display charts.
+                Once You Attempt Any Test, Your Progress Will Displayed Here in Chart.
             </Box>
         );
     }
@@ -90,13 +90,25 @@ const DashboardCharts = ({ testResults }) => {
                         <XAxis dataKey="name" stroke={textColor} />
                         <YAxis stroke={textColor} />
                         <Tooltip />
-                        <Bar dataKey="score" fill="#00BFFF" />
+                        <Bar
+                            dataKey="score"
+                            fill="#00BFFF"
+                            radius={[4, 4, 0, 0]} // Rounded corners for bars
+                            onMouseOver={(e) => {
+                                e.target.style.stroke = "#007ACC"; // Add a border color
+                                e.target.style.strokeWidth = "4"; // Increase thickness
+                            }}
+                            onMouseOut={(e) => {
+                                e.target.style.stroke = "none"; // Remove border
+                                e.target.style.strokeWidth = "0"; // Reset thickness
+                            }}
+                        />
                     </BarChart>
                 </ResponsiveContainer>
             </Box>
 
             {/* Pie Chart */}
-            <Box bg={bgColor} p={4} borderRadius="xl" boxShadow="md">
+            <Box bg={bgColor} p={4} borderRadius="xl" boxShadow="">
                 <Text mb={3} fontSize="lg" fontWeight="bold" color={textColor}>
                     Score Distribution
                 </Text>
@@ -120,7 +132,7 @@ const DashboardCharts = ({ testResults }) => {
                 </ResponsiveContainer>
             </Box>
 
-            {/* Score Summary by Subject */}
+            {/* Score Summary by Subject
             <Box bg={bgColor} p={4} borderRadius="xl" boxShadow="md">
                 <Text mb={3} fontSize="lg" fontWeight="bold" color={textColor}>
                     Score Summary by Subject
@@ -133,7 +145,7 @@ const DashboardCharts = ({ testResults }) => {
                         <Bar dataKey="avgScore" fill="#FF8042" />
                     </BarChart>
                 </ResponsiveContainer>
-            </Box>
+            </Box> */}
 
             {/* Recent Tests */}
             <Box bg={bgColor} p={4} borderRadius="xl" color={textColor} boxShadow="md">

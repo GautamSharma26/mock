@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import {
   Box, Input, Button, FormControl, FormLabel, Heading, Text,
-  VStack, useToast, Link, useColorModeValue
+  VStack, useToast, Link, useColorModeValue, HStack, IconButton
 } from "@chakra-ui/react";
+import { CopyIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
@@ -19,11 +20,33 @@ const Auth = () => {
 
   // Predefined Dummy User
   const DUMMY_USER = {
-    email: "test@example.com",
-    password: "password123",
+    email: "mocktest@wtechnology.com",
+    password: "1234567890",
   };
 
-  const handleSubmit = (e) => {
+    // Function to copy text to clipboard
+    const handleCopy = (text) => {
+      navigator.clipboard.writeText(text).then(() => {
+        toast({
+          title: "Copied to Clipboard",
+          description: `Copied: ${text}`,
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+      }).catch((err) => {
+        console.error("Failed to copy text: ", err);
+        toast({
+          title: "Error",
+          description: "Failed to copy text.",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      });
+    };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Trim input values to avoid issues
@@ -68,20 +91,48 @@ const Auth = () => {
         });
       }
     } else {
-      // **Dummy Registration Success**
-      toast({
-        title: "Registration Successful",
-        description: "You can now log in!",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-      });
+      // **Registration Logic**
+      try {
+        const response = await fetch("/api/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: trimmedName, email: trimmedEmail, password: trimmedPassword }),
+        });
 
-      // Clear form after registration
-      setEmail("");
-      setPassword("");
-      setName("");
-      setIsLogin(true); // Switch to login form
+        if (response.ok) {
+          toast({
+            title: "Registration Successful",
+            description: "You can now log in!",
+            status: "success",
+            duration: 2000,
+            isClosable: true,
+          });
+
+          // Clear form after registration
+          setEmail("");
+          setPassword("");
+          setName("");
+          setIsLogin(true); // Switch to login form
+        } else {
+          const errorData = await response.json();
+          toast({
+            title: "Registration Failed",
+            description: errorData.message || "An error occurred.",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
+        }
+      } catch (error) {
+        console.error("Error during registration:", error);
+        toast({
+          title: "Error",
+          description: "An unexpected error occurred.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
     }
   };
 
@@ -99,6 +150,38 @@ const Auth = () => {
       <Heading size="lg" color={textColor} mb={4}>
         {isLogin ? "Login to Your Account" : "Create an Account"}
       </Heading>
+
+      {isLogin ? (
+        <Text mb={4} color="gray.500">
+          Please use the following credentials to log in:
+          <HStack mt={2}>
+            <Text>
+              <strong>Email:</strong> {DUMMY_USER.email}
+            </Text>
+            <IconButton
+              aria-label="Copy Email"
+              icon={<CopyIcon />}
+              size="sm"
+              onClick={() => handleCopy(DUMMY_USER.email)}
+            />
+          </HStack>
+          <HStack mt={2}>
+            <Text>
+              <strong>Password:</strong> {DUMMY_USER.password}
+            </Text>
+            <IconButton
+              aria-label="Copy Password"
+              icon={<CopyIcon />}
+              size="sm"
+              onClick={() => handleCopy(DUMMY_USER.password)}
+            />
+          </HStack>
+        </Text>
+      ) : (
+        <Text mb={4} color="gray.500">
+          Currently, there is no need to register here.
+        </Text>
+      )}
 
       <form onSubmit={handleSubmit}>
         <VStack spacing={4}>
