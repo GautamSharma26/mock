@@ -5,6 +5,8 @@ import {
 } from "@chakra-ui/react";
 import { CopyIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -18,44 +20,86 @@ const Auth = () => {
   const bgColor = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("gray.900", "white");
 
-  // Predefined Dummy User
-  const DUMMY_USER = {
-    email: "mocktest@wtechnology.com",
-    password: "1234567890",
-  };
 
-    // Function to copy text to clipboard
-    const handleCopy = (text) => {
-      navigator.clipboard.writeText(text).then(() => {
-        toast({
-          title: "Copied to Clipboard",
-          description: `Copied: ${text}`,
-          status: "success",
-          duration: 2000,
-          isClosable: true,
-        });
-      }).catch((err) => {
-        console.error("Failed to copy text: ", err);
-        toast({
-          title: "Error",
-          description: "Failed to copy text.",
-          status: "error",
-          duration: 2000,
-          isClosable: true,
-        });
-      });
-    };
+  // async function handleSubmit (e) {
+  //   console.log(e,"eeeeeeeeeeeeeeeeeeeee",password,email)
+  //   e.preventDefault();
 
-  const handleSubmit = async (e) => {
+  //   // Trim input values to avoid issues
+  //   // const trimmedEmail = email.trim();
+  //   // const trimmedPassword = password.trim();
+  //   // const trimmedName = name.trim();
+  //   try {
+  //     const response = await axios.post("http://localhost:8000/auth/login",
+  //         email,
+  //         password,
+  //     )
+  //     .then((response) => {
+  //       console.log(response.data.access_token, "token "); // Store this token!
+  //   })
+  // } catch (error) {
+  //     console.error(error.response,"ssssssssssssssssssssssssssssssss");
+  // }
+
+  //   Validation
+  //   if (!trimmedEmail || !trimmedPassword || (!isLogin && !trimmedName)) {
+  //     toast({
+  //       title: "Error",
+  //       description: "All fields are required!",
+  //       status: "error",
+  //       duration: 3000,
+  //       isClosable: true,
+  //     });
+  //     return;
+  //   }
+
+  //   if (isLogin) {
+  //     // **Login Validation**: Check against dummy user
+  //     if (trimmedEmail === DUMMY_USER.email && trimmedPassword === DUMMY_USER.password) {
+  //       // localStorage.setItem("isLoggedIn", "true");
+  //       // toast({
+  //       //   title: "Login Successful",
+  //       //   description: "Redirecting to Dashboard...",
+  //       //   status: "success",
+  //       //   duration: 2000,
+  //       //   isClosable: true,
+  //       // });
+
+  //       setTimeout(() => {
+  //         navigate("/dashboard"); // Redirect to Dashboard
+  //       }, 1500);
+  //     } else {
+  //       toast({
+  //         title: "Login Failed",
+  //         description: "Invalid email or password.",
+  //         status: "error",
+  //         duration: 3000,
+  //         isClosable: true,
+  //       });
+  //     }
+  //   } else {
+  //     // **Dummy Registration Success**
+  //     toast({
+  //       title: "Registration Successful",
+  //       description: "You can now log in!",
+  //       status: "success",
+  //       duration: 2000,
+  //       isClosable: true,
+  //     });
+
+  //     // Clear form after registration
+  //     setEmail("");
+  //     setPassword("");
+  //     setName("");
+  //     setIsLogin(true); // Switch to login form
+  //   }
+  // };
+
+
+  async function handleSubmit(e) {
     e.preventDefault();
-
-    // Trim input values to avoid issues
-    const trimmedEmail = email.trim();
-    const trimmedPassword = password.trim();
-    const trimmedName = name.trim();
-
-    // Validation
-    if (!trimmedEmail || !trimmedPassword || (!isLogin && !trimmedName)) {
+  
+    if (!email || !password || (!isLogin && !name)) {
       toast({
         title: "Error",
         description: "All fields are required!",
@@ -65,77 +109,43 @@ const Auth = () => {
       });
       return;
     }
-
-    if (isLogin) {
-      // **Login Validation**: Check against dummy user
-      if (trimmedEmail === DUMMY_USER.email && trimmedPassword === DUMMY_USER.password) {
-        localStorage.setItem("isLoggedIn", "true");
-        toast({
-          title: "Login Successful",
-          description: "Redirecting to Dashboard...",
-          status: "success",
-          duration: 2000,
-          isClosable: true,
-        });
-
-        setTimeout(() => {
-          navigate("/dashboard"); // Redirect to Dashboard
-        }, 1500);
-      } else {
-        toast({
-          title: "Login Failed",
-          description: "Invalid email or password.",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      }
-    } else {
-      // **Registration Logic**
-      try {
-        const response = await fetch("/api/register", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: trimmedName, email: trimmedEmail, password: trimmedPassword }),
-        });
-
-        if (response.ok) {
-          toast({
-            title: "Registration Successful",
-            description: "You can now log in!",
-            status: "success",
-            duration: 2000,
-            isClosable: true,
-          });
-
-          // Clear form after registration
-          setEmail("");
-          setPassword("");
-          setName("");
-          setIsLogin(true); // Switch to login form
-        } else {
-          const errorData = await response.json();
-          toast({
-            title: "Registration Failed",
-            description: errorData.message || "An error occurred.",
-            status: "error",
-            duration: 3000,
-            isClosable: true,
-          });
-        }
-      } catch (error) {
-        console.error("Error during registration:", error);
-        toast({
-          title: "Error",
-          description: "An unexpected error occurred.",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
-      }
+  
+    try {
+      const response = await axios.post("http://localhost:8000/auth/login", {
+        email,
+        password,
+      });
+  
+      console.log(response.data.access_token, "token");
+  
+      toast({
+        title: "Login Successful",
+        description: "Redirecting to Dashboard...",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
+  
+      localStorage.setItem("token", response.data.access_token);
+      localStorage.setItem("isLoggedIn",true)
+  
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1500);
+  
+    } catch (error) {
+      console.error(error.response?.data || error.message, "API Error");
+  
+      toast({
+        title: "Login Failed",
+        description: error.response?.data?.detail || "Something went wrong!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
-  };
-
+  }
+  
   return (
     <Box
       bg={bgColor}
