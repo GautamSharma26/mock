@@ -18,6 +18,7 @@ backend/coverage.xml
 backend/htmlcov/
 backend/.pylint.d/
 backend/*.sqlite3
+backend/*.db
 
 # Optional: ignore everything in backend except your app (uncomment and modify as needed)
 # backend/**/*
@@ -32,7 +33,7 @@ mock-test-potal/.next/
 mock-test-potal/.turbo/
 mock-test-potal/.env
 mock-test-potal/.env.*
-mock-test-potal/src/*.json
+mock-test-potal/src/data/*.json
 
 # Frontend logs
 mock-test-potal/npm-debug.log*

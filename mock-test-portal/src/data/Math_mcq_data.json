@@ -1,0 +1,52 @@
+[
+    {
+        "question": "If the mean of five numbers is 12, and three of the numbers are 6, 8, and 10, what is the sum of the other two numbers?",
+        "options": [
+            "18",
+            "20",
+            "22",
+            "24"
+        ],
+        "correctAnswer": "20"
+    },
+    {
+        "question": "In a triangle, the ratio of the lengths of the sides opposite to the angles is 2:3:5. If the smallest side is 8 cm long, what is the length of the hypotenuse?",
+        "options": [
+            "12 cm",
+            "16 cm",
+            "20 cm",
+            "24 cm"
+        ],
+        "correctAnswer": "20 cm"
+    },
+    {
+        "question": "A cylindrical well of radius 4.5 m has a depth of 7 m. What is its curved surface area?",
+        "options": [
+            "99",
+            "100.5",
+            "101.8",
+            "103 m^2"
+        ],
+        "correctAnswer": "103 m^2"
+    },
+    {
+        "question": "A water tank can hold 2400 litres of water. The capacity of a tap is 10 litres per minute. If the tank is already 1/3 full, how much time will it take to fill the tank?",
+        "options": [
+            "3 hours 20 minutes",
+            "4 hours 20 minutes",
+            "5 hours 20 minutes",
+            "6 hours 20 minutes"
+        ],
+        "correctAnswer": "6 hours 20 minutes"
+    },
+    {
+        "question": "A circle is inscribed in an equilateral triangle with each side measuring 10 cm. What is the radius of the circle?",
+        "options": [
+            "2.78 cm",
+            "3.33 cm",
+            "3.54 cm",
+            "3.63 cm"
+        ],
+        "correctAnswer": "3.63 cm"
+    }
+]
