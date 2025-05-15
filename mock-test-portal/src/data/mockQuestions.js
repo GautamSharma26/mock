@@ -609,6 +609,11 @@ const mockQuestions = {
         { question: "Which country became the largest producer of renewable energy in 2024?", options: ["India", "China", "USA", "Germany"], correctAnswer: "China" }
     ],
 
+    19: [ // Just For Test
+        { question: "Who is the current President of India?", options: ["Ram Nath Kovind", "Droupadi Murmu", "Pranab Mukherjee", "A.P.J. Abdul Kalam"], correctAnswer: "Droupadi Murmu" },
+        { question: "Which country hosted the G20 Summit in 2023?", options: ["India", "Indonesia", "Italy", "Japan"], correctAnswer: "India" },
+        { question: "What is the capital of Australia?", options: ["Sydney", "Melbourne", "Canberra", "Brisbane"], correctAnswer: "Canberra" }
+    ],
     
 };
 

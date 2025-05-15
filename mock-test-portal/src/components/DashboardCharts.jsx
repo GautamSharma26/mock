@@ -24,8 +24,6 @@ import {
 const COLORS = ["#FF8042", "#00C49F", "#FFBB28", "#0088FE"];
 const subjectScoresMap = {};
 
-
-
 // Prepare data for chart
 const subjectScoreData = Object.entries(subjectScoresMap).map(([subject, scores]) => ({
     subject,
@@ -45,11 +43,10 @@ const DashboardCharts = ({ testResults }) => {
     }
 
     const barData = testResults.map((result, index) => ({
-        name: `Test ${index + 1}`,
+        name: result.testName || `Test ${index + 1}`,
         score: result.score,
     }));
 
-    // Pie data: group by rounded scores
     const scoreDistribution = [...new Set(testResults.map(r => r.total))].flatMap(total =>
         [0, 1, 2, 3].map(score => {
             const count = testResults.filter(
@@ -59,7 +56,6 @@ const DashboardCharts = ({ testResults }) => {
         }).filter(Boolean)
     );
 
-    // Score Summary (using average of normalized scores per total)
     const groupedByTotal = testResults.reduce((acc, curr) => {
         const key = curr.total;
         if (!acc[key]) acc[key] = [];
@@ -93,14 +89,14 @@ const DashboardCharts = ({ testResults }) => {
                         <Bar
                             dataKey="score"
                             fill="#00BFFF"
-                            radius={[4, 4, 0, 0]} // Rounded corners for bars
+                            radius={[4, 4, 0, 0]}
                             onMouseOver={(e) => {
-                                e.target.style.stroke = "#007ACC"; // Add a border color
-                                e.target.style.strokeWidth = "4"; // Increase thickness
+                                e.target.style.stroke = "#007ACC";
+                                e.target.style.strokeWidth = "4";
                             }}
                             onMouseOut={(e) => {
-                                e.target.style.stroke = "none"; // Remove border
-                                e.target.style.strokeWidth = "0"; // Reset thickness
+                                e.target.style.stroke = "none";
+                                e.target.style.strokeWidth = "0";
                             }}
                         />
                     </BarChart>
@@ -131,21 +127,6 @@ const DashboardCharts = ({ testResults }) => {
                     </PieChart>
                 </ResponsiveContainer>
             </Box>
-
-            {/* Score Summary by Subject
-            <Box bg={bgColor} p={4} borderRadius="xl" boxShadow="md">
-                <Text mb={3} fontSize="lg" fontWeight="bold" color={textColor}>
-                    Score Summary by Subject
-                </Text>
-                <ResponsiveContainer width="100%" height={250}>
-                    <BarChart data={subjectScoreData}>
-                        <XAxis dataKey="subject" stroke={textColor} />
-                        <YAxis domain={[0, 3]} stroke={textColor} />
-                        <Tooltip />
-                        <Bar dataKey="avgScore" fill="#FF8042" />
-                    </BarChart>
-                </ResponsiveContainer>
-            </Box> */}
 
             {/* Recent Tests */}
             <Box bg={bgColor} p={4} borderRadius="xl" color={textColor} boxShadow="md">

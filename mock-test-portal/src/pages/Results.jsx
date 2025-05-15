@@ -1,17 +1,17 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   Box, Heading, Text, Button, VStack, Divider, useColorModeValue,
   Link, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, Input, Textarea, useDisclosure, useToast
 } from "@chakra-ui/react";
 import { useLocation, useNavigate } from "react-router-dom";
-import emailjs from "@emailjs/browser"; // Import EmailJS
+import emailjs from "@emailjs/browser";
 
 const Results = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const form = useRef(); // Use ref for the form
-  const toast = useToast(); // Initialize Chakra UI toast
+  const form = useRef();
+  const toast = useToast();
 
   const {
     userName,
@@ -31,24 +31,48 @@ const Results = () => {
 
   const [pastResults, setPastResults] = useState([]);
 
-  // Define colors for light and dark modes
   const questionTextColor = useColorModeValue("gray.800", "gray.200");
   const correctAnswerBg = useColorModeValue("green.50", "green.900");
   const incorrectAnswerBg = useColorModeValue("red.50", "red.900");
 
+  // ✅ Store and load results from localStorage (prevent duplicates)
+  useEffect(() => {
+    const storedResults = JSON.parse(localStorage.getItem("testResults")) || [];
+
+    // Skip saving if testName is unknown or score data is invalid
+    if (testName === "Unknown Test" || !userName || total === 0) {
+      setPastResults(storedResults.reverse());
+      return;
+    }
+
+    const isDuplicate = storedResults.some(
+      (r) =>
+        r.userName === userName &&
+        r.testName === testName &&
+        r.timestamp === timestamp
+    );
+
+    if (!isDuplicate) {
+      const newResult = { userName, score, total, testName, timestamp };
+      const updatedResults = [...storedResults, newResult];
+      localStorage.setItem("testResults", JSON.stringify(updatedResults));
+      setPastResults(updatedResults.reverse());
+    } else {
+      setPastResults(storedResults.reverse());
+    }
+  }, [userName, score, total, testName, timestamp]);
+
   const sendEmail = (e) => {
     e.preventDefault();
-
     emailjs
       .sendForm(
-        "service_3auufg8", // Replace with your EmailJS service ID
-        "template_9hyy3ko", // Replace with your EmailJS template ID
+        "service_3auufg8",
+        "template_9hyy3ko",
         form.current,
-        "rXtrcX9RwBXaEwCT8" // Replace with your EmailJS public key
+        "rXtrcX9RwBXaEwCT8"
       )
       .then(
         (response) => {
-          console.log("SUCCESS!", response.status, response.text);
           toast({
             title: "Feedback Sent",
             description: "Your feedback has been sent successfully!",
@@ -59,7 +83,6 @@ const Results = () => {
           onClose();
         },
         (error) => {
-          console.error("FAILED...", error);
           toast({
             title: "Failed to Send Feedback",
             description: "An error occurred while sending your feedback. Please try again.",
@@ -113,7 +136,9 @@ const Results = () => {
         </Link>.
       </Text>
 
-      <Button mt={6} colorScheme="blue" onClick={() => navigate("/tests")}>Retake Test</Button>
+      <Button mt={6} colorScheme="blue" onClick={() => navigate("/tests")}>
+        Retake Test
+      </Button>
 
       <Divider my={6} />
 
@@ -141,12 +166,12 @@ const Results = () => {
               <VStack spacing={4}>
                 <Input
                   placeholder="Your Name"
-                  name="user_name" // Name attribute for EmailJS
+                  name="user_name"
                   required
                 />
                 <Textarea
                   placeholder="Enter your feedback here..."
-                  name="message" // Name attribute for EmailJS
+                  name="message"
                   required
                 />
               </VStack>
