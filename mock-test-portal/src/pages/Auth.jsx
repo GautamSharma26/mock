@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import {
   Box, Input, Button, FormControl, FormLabel, Heading, Text,
-  VStack, useToast, Link, useColorModeValue, HStack, IconButton
+  VStack, useToast, Link, useColorModeValue
 } from "@chakra-ui/react";
-import { CopyIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -160,38 +159,6 @@ const Auth = () => {
       <Heading size="lg" color={textColor} mb={4}>
         {isLogin ? "Login to Your Account" : "Create an Account"}
       </Heading>
-
-      {isLogin ? (
-        <Text mb={4} color="gray.500">
-          Please use the following credentials to log in:
-          <HStack mt={2}>
-            <Text>
-              <strong>Email:</strong> {DUMMY_USER.email}
-            </Text>
-            <IconButton
-              aria-label="Copy Email"
-              icon={<CopyIcon />}
-              size="sm"
-              onClick={() => handleCopy(DUMMY_USER.email)}
-            />
-          </HStack>
-          <HStack mt={2}>
-            <Text>
-              <strong>Password:</strong> {DUMMY_USER.password}
-            </Text>
-            <IconButton
-              aria-label="Copy Password"
-              icon={<CopyIcon />}
-              size="sm"
-              onClick={() => handleCopy(DUMMY_USER.password)}
-            />
-          </HStack>
-        </Text>
-      ) : (
-        <Text mb={4} color="gray.500">
-          Currently, there is no need to register here.
-        </Text>
-      )}
 
       <form onSubmit={handleSubmit}>
         <VStack spacing={4}>
